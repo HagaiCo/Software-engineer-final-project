@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class branch
 {
-    private company_id id;
+    private company_id id;// ה id של החברה
     private String branch_name;
     private String branch_address;
     private Integer branch_phone;
