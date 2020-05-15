@@ -32,9 +32,8 @@ public class CalculatorController {
             }
             catch(NumberFormatException ex)
             {
-                theView.errorDisplay("אירעה שגיאה!");
+                theView.errorDisplay("איפה תלך ?!");
             }
-
         }
     }
 }
