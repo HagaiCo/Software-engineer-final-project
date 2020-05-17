@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class retail extends account
+public class retail extends  account
 {
     private user_id id; //קריאה לקלאס של user_id לקבלת id חדש
     private String retail_name; // שם החברה
