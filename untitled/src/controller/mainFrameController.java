@@ -38,6 +38,7 @@ private home_page home_page;
         @Override
         public void actionPerformed(ActionEvent e) {
             register_page=new Register_page();
+            register_page.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         }
 
     }
