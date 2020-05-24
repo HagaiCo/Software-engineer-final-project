@@ -1,4 +1,18 @@
-public class account
+import java.security
+
+
+
+public class Account
+{
+
+
+}
+
+
+
+
+
+public class account1
 {
     private String username;//שם משתמש
     private String password;//סיסמא
