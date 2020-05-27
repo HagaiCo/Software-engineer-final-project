@@ -1,5 +1,6 @@
 package controller;
 
+import viewer.Log_in;
 import viewer.Register_page;
 import viewer.home_page;
 
@@ -12,6 +13,8 @@ private home_page home_page;
     private JButton button_register;
     private JButton button_log;
     private Register_page register_page;
+    private LoginFrameController LOGIN;
+
 
     public mainFrameController() {
         InitComponent();
@@ -23,6 +26,7 @@ private home_page home_page;
         home_page = new home_page();
         button_log= home_page.getButton_log();
         button_register=home_page.getButton_register();
+
     }
 
     public void showHomeFrame()
@@ -42,13 +46,13 @@ private home_page home_page;
         }
 
     }
-    private class button_logListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            JOptionPane.showMessageDialog(home_page,
-                    "First we need to allow people to have a user");
-        }
+
+        private class button_logListener implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+              LOGIN=new LoginFrameController();
+            }
     }
 }
 

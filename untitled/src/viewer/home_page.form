@@ -26,8 +26,8 @@
         <properties>
           <focusCycleRoot value="false"/>
           <font name="Impact" size="36" style="0"/>
-          <foreground color="-16777216"/>
-          <text value="Welcome to the First Form"/>
+          <foreground color="-14593127"/>
+          <text value="Just Help Them"/>
         </properties>
       </component>
       <component id="ddf4d" class="javax.swing.JButton" binding="button_register">
@@ -42,7 +42,7 @@
           <enabled value="true"/>
           <font name="Georgia Pro Black" size="18" style="3"/>
           <foreground color="-1"/>
-          <hideActionText value="false"/>
+          <hideActionText value="true"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="11"/>
           <iconTextGap value="4"/>
@@ -72,6 +72,7 @@
           <hideActionText value="false"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="11"/>
+          <inheritsPopupMenu value="false"/>
           <rolloverEnabled value="true"/>
           <text value="Log-In"/>
           <toolTipText value="Log-In"/>

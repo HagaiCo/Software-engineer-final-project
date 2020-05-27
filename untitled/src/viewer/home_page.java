@@ -2,6 +2,7 @@ package viewer;
 
 import javax.swing.*;
 
+
 public class home_page extends JFrame {
     private JLabel title;
     private JButton button_register;
