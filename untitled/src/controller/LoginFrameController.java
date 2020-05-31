@@ -1,9 +1,7 @@
 package controller;
 
-import viewer.Log_in;
+import viewer.LogInViewer;
 import viewer.Register_page;
-import viewer.home_page;
-import DButills.DBcollection.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +14,7 @@ import java.sql.Statement;
 public class LoginFrameController {
     private JButton button_register;
     private JButton button_log;
-    private Log_in Login;
+    private LogInViewer logInViewer;
     Register_page Register_page;
 
     public LoginFrameController() {
@@ -25,9 +23,9 @@ public class LoginFrameController {
     }
 
     private void InitComponent() {
-        Login = new Log_in();
-        button_log= Login.getLogIn();
-        button_register=Login.getRegister();
+        logInViewer = new LogInViewer();
+        button_log= logInViewer.getLogIn();
+        button_register= logInViewer.getRegister();
 
     }
 
@@ -51,14 +49,13 @@ public class LoginFrameController {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            String userName = Login.getUsername();
-            ValidateLoginRequest();
-
-                JOptionPane.showMessageDialog(null,
-                        "we need to have a DataBase first",
-                        "Hagai The Man",
-                        JOptionPane.WARNING_MESSAGE);
-
+            //String userName = logInViewer.getUsername();
+            try
+            {
+                ValidateLoginRequest("","");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
         public void ValidateLoginRequest (String name, String pass) throws SQLException
         {
@@ -67,8 +64,8 @@ public class LoginFrameController {
                 Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
                 Statement stm = connection.createStatement();
-                stm.execute("INSERT INTO accounts" + "(name, pass, email, phone, birth, address)" +
-                        "VALUES( '" + name + "', '" + pass + "', '" + email + "', '" + phone + "', '" + birth + "', '" + address + "')");
+                //stm.execute("INSERT INTO accounts" + "(name, pass, email, phone, birth, address)" +
+                  //      "VALUES( '" + name + "', '" + pass + "', '" + email + "', '" + phone + "', '" + birth + "', '" + address + "')");
                 stm.close();
 
                 connection.close();
