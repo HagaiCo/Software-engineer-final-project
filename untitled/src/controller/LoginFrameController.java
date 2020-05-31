@@ -55,9 +55,10 @@ public class LoginFrameController {
                 ex.printStackTrace();
             }
         }
-        public void ValidateLoginRequest (String Username, String pass) throws SQLException
+        public Boolean ValidateLoginRequest (String Username, String pass) throws SQLException
         {
-            try {
+            try
+            {
                 System.out.println("Connecting to a selected database...");
                 Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
@@ -65,15 +66,24 @@ public class LoginFrameController {
                 PreparedStatement ps = connection.prepareStatement(sqlQuary);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
-                    System.out.println("you have successfully logged in to "+rs.getString("username") +  "\n");
+                {
+                    System.out.println("you have successfully logged in to " + rs.getString("username") + "\n");
+                    ps.close();
+                    connection.close();
+                    return true;
+                }
                 else
+                    {
                     System.out.println("The user or the password doesn't match!");
-                ps.close();
-
-                connection.close();
-            } catch (SQLException e)
+                    ps.close();
+                    connection.close();
+                    return false;
+                    }
+            }
+            catch (SQLException e)
             {
                 System.out.println("שם המשתמש או הסיסמה אינם מתאימים" + e.getMessage());
+                return false;
             }
         }
     }
