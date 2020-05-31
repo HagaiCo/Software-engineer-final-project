@@ -3,10 +3,15 @@ package controller;
 import viewer.Log_in;
 import viewer.Register_page;
 import viewer.home_page;
+import DButills.DBcollection.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class LoginFrameController {
     private JButton button_register;
@@ -17,7 +22,6 @@ public class LoginFrameController {
     public LoginFrameController() {
         InitComponent();
         InitListeners();
-
     }
 
     private void InitComponent() {
@@ -42,14 +46,35 @@ public class LoginFrameController {
 
     }
 
-    private class button_logListener implements ActionListener {
+    private class button_logListener implements ActionListener
+    {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            JOptionPane.showMessageDialog(null,
-                    "we need to have a DataBase first",
-                    "Hagai The Man",
-                    JOptionPane.WARNING_MESSAGE);
+            String userName = Login.getUsername();
+            ValidateLoginRequest();
+
+                JOptionPane.showMessageDialog(null,
+                        "we need to have a DataBase first",
+                        "Hagai The Man",
+                        JOptionPane.WARNING_MESSAGE);
+
+        }
+        public void ValidateLoginRequest (String name, String pass) throws SQLException
+        {
+            try {
+                System.out.println("Connecting to a selected database...");
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+                System.out.println("Connected database successfully...");
+                Statement stm = connection.createStatement();
+                stm.execute("INSERT INTO accounts" + "(name, pass, email, phone, birth, address)" +
+                        "VALUES( '" + name + "', '" + pass + "', '" + email + "', '" + phone + "', '" + birth + "', '" + address + "')");
+                stm.close();
+
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println("Can't Connect To DB" + e.getMessage());
+            }
         }
     }
 }
