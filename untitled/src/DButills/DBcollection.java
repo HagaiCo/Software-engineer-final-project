@@ -78,13 +78,11 @@ public class DBcollection{
 
     public void DBCreate()
         {
-
             try
             {
                 System.out.println("Connecting to a selected database...");
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\GAMER\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
-
                 Statement stm = connection.createStatement();
                 stm.execute("CREATE TABLE IF NOT EXISTS accounts "+ "(name TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
 
@@ -93,27 +91,23 @@ public class DBcollection{
             }
             catch(SQLException e)
             {
-                System.out.println("something went wrong" + e.getMessage());
+                System.out.println("something went wrong " + e.getMessage());
             }
         }
 
-    public void DBregister(String name, String pass, String email, String phone, String birth, String address) throws SQLException
-    {
+    public void DBregister(String name, String pass, String email, String phone, String birth, String address) throws SQLException {
         try {
             System.out.println("Connecting to a selected database...");
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\GAMER\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
             System.out.println("Connected database successfully...");
             Statement stm = connection.createStatement();
-            stm.execute("INSERT INTO accounts"+"(name, pass, email, phone, birth, address)"+
-                    "VALUES( '"+name+"', '"+pass+"', '"+email+"', '"+phone+"', '"+birth+"', '"+address+"')");
+            stm.execute("INSERT INTO accounts" + "(name, pass, email, phone, birth, address)" +
+                    "VALUES( '" + name + "', '" + pass + "', '" + email + "', '" + phone + "', '" + birth + "', '" + address + "')");
             stm.close();
 
             connection.close();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("Can't Connect To DB" + e.getMessage());
         }
     }
-
-    }
+}
