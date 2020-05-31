@@ -2,7 +2,7 @@ package viewer;
 
 import javax.swing.*;
 
-public class Log_in extends JFrame {
+public class LogInViewer extends JFrame {
     private JPanel LoginFrame;
     private JPasswordField password;
     private JLabel Label;
@@ -12,7 +12,7 @@ public class Log_in extends JFrame {
     private JLabel pass;
 
 
-    public Log_in() {
+    public LogInViewer() {
         super("Donation-Program");
         setBounds(300,300,800,500);
         getContentPane().add(LoginFrame);
