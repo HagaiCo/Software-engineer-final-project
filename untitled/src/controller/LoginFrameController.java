@@ -50,17 +50,18 @@ public class LoginFrameController {
             String pass = logInViewer.getPassword();
             try
             {
-                ValidateLoginRequest(userName,pass);
+                Boolean isSuccessfullyLoggedIn = ValidateLoginRequest(userName,pass);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }
         public Boolean ValidateLoginRequest (String Username, String pass) throws SQLException
         {
+            String windownsUserName = System.getProperty("user.name");
             try
             {
                 System.out.println("Connecting to a selected database...");
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
                 String sqlQuary = "SELECT username FROM accounts WHERE username = '"+Username+"' AND pass = '"+pass+"'";
                 PreparedStatement ps = connection.prepareStatement(sqlQuary);
