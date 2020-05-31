@@ -10,7 +10,11 @@ public class LogInViewer extends JFrame {
     private JButton register;
     private JButton LogIn;
     private JLabel pass;
+    private JLabel connect;
 
+    public JLabel getConnect() {
+        return connect;
+    }
 
     public LogInViewer() {
         super("Donation-Program");

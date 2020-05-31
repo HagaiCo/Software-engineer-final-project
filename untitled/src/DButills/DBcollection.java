@@ -101,7 +101,7 @@ public class DBcollection{
             Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
             System.out.println("Connected database successfully...");
             Statement stm = connection.createStatement();
-            stm.execute("INSERT INTO accounts" + "(name, pass, email, phone, birth, address)" +
+            stm.execute("INSERT INTO accounts" + "(username, pass, email, phone, birth, address)" +
                     "VALUES( '" + name + "', '" + pass + "', '" + email + "', '" + phone + "', '" + birth + "', '" + address + "')");
             stm.close();
 
