@@ -64,8 +64,6 @@ public class LoginFrameController {
                 String sqlQuary = "SELECT username FROM accounts WHERE username = '"+Username+"' AND pass = '"+pass+"'";
                 PreparedStatement ps = connection.prepareStatement(sqlQuary);
                 ResultSet rs = ps.executeQuery();
-                //if (rs.getString("username")==null)
-                //    System.out.println("שם המשתמש או הסיסמה אינם מתאימים");
                 if (rs.next())
                     System.out.println("you have successfully logged in to "+rs.getString("username") +  "\n");
                 else
