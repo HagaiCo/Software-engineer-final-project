@@ -3,7 +3,9 @@ package controller;
 import viewer.LogInViewer;
 import viewer.Register_page;
 
+import Model.account;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -11,6 +13,7 @@ import java.sql.*;
 public class LoginFrameController {
     private JButton button_register;
     private JButton button_log;
+    private JLabel StatusMassage;
     private LogInViewer logInViewer;
     Register_page Register_page;
 
@@ -46,44 +49,26 @@ public class LoginFrameController {
         @Override
         public void actionPerformed(ActionEvent e)
         {
+            StatusMassage =logInViewer.getConnect();
             String userName = logInViewer.getUsername();
             String pass = logInViewer.getPassword();
+            account object = new account(userName,pass);
             try
             {
-                Boolean isSuccessfullyLoggedIn = ValidateLoginRequest(userName,pass);
+               Boolean isSuccessfullyLoggedIn = object.ValidateLoginRequest(userName,pass);
+                if(isSuccessfullyLoggedIn==true) {
+                    StatusMassage.setText("Welcome " + userName);
+                    StatusMassage.setForeground(Color.green);
+                }
+                else {
+                    StatusMassage.setText(userName + "is not a registered account");
+                    StatusMassage.setForeground(Color.red);
+                }
+
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-        }
-        public Boolean ValidateLoginRequest (String Username, String pass) throws SQLException
-        {
-            String windownsUserName = System.getProperty("user.name");
-            try
-            {
-                System.out.println("Connecting to a selected database...");
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
-                System.out.println("Connected database successfully...");
-                String sqlQuary = "SELECT username FROM accounts WHERE username = '"+Username+"' AND pass = '"+pass+"'";
-                PreparedStatement ps = connection.prepareStatement(sqlQuary);
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    System.out.println("you have successfully logged in to " + rs.getString("username") + "\n");
-                    ps.close();
-                    connection.close();
-                    return true;
-                }
-                else {
-                    System.out.println("The user or the password doesn't match!");
-                    ps.close();
-                    connection.close();
-                    return false;
-                }
-            }
-            catch (SQLException e)
-            {
-                System.out.println(e.getMessage());
-                return false;
-            }
+
         }
     }
 }
