@@ -6,10 +6,7 @@ import viewer.Register_page;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class LoginFrameController {
     private JButton button_register;
@@ -49,28 +46,36 @@ public class LoginFrameController {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            //String userName = logInViewer.getUsername();
+            String userName = logInViewer.getUsername();
+            String pass = logInViewer.getPassword();
             try
             {
-                ValidateLoginRequest("","");
+                ValidateLoginRequest(userName,pass);
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
         }
-        public void ValidateLoginRequest (String name, String pass) throws SQLException
+        public void ValidateLoginRequest (String Username, String pass) throws SQLException
         {
             try {
                 System.out.println("Connecting to a selected database...");
                 Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
-                Statement stm = connection.createStatement();
-                //stm.execute("INSERT INTO accounts" + "(name, pass, email, phone, birth, address)" +
-                  //      "VALUES( '" + name + "', '" + pass + "', '" + email + "', '" + phone + "', '" + birth + "', '" + address + "')");
-                stm.close();
+                String sqlQuary = "SELECT username FROM accounts WHERE username = '"+Username+"' AND pass = '"+pass+"'";
+                PreparedStatement ps = connection.prepareStatement(sqlQuary);
+                ResultSet rs = ps.executeQuery();
+                //if (rs.getString("username")==null)
+                //    System.out.println("שם המשתמש או הסיסמה אינם מתאימים");
+                if (rs.next())
+                    System.out.println("you have successfully logged in to "+rs.getString("username") +  "\n");
+                else
+                    System.out.println("The user or the password doesn't match!");
+                ps.close();
 
                 connection.close();
-            } catch (SQLException e) {
-                System.out.println("Can't Connect To DB" + e.getMessage());
+            } catch (SQLException e)
+            {
+                System.out.println("שם המשתמש או הסיסמה אינם מתאימים" + e.getMessage());
             }
         }
     }
