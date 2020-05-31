@@ -73,9 +73,6 @@ public class DBcollection{
         this.phone = phone;
     }
 
-
-
-
     public void DBCreate()
         {
             try
@@ -84,7 +81,7 @@ public class DBcollection{
                 Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
                 Statement stm = connection.createStatement();
-                stm.execute("CREATE TABLE IF NOT EXISTS accounts "+ "(name TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
+                stm.execute("CREATE TABLE IF NOT EXISTS accounts "+ "(username TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
 
                 stm.close();
                 connection.close();

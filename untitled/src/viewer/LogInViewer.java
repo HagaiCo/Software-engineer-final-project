@@ -21,13 +21,10 @@ public class LogInViewer extends JFrame {
 
     }
 
-    public JPasswordField getPassword() {
-        return password;
+    public String getPassword() {
+        return password.getText();
     }
-
-    public JTextField getUsername() {
-        return Username;
-    }
+    public String getUsername() { return Username.getText(); }
 
 
     public JButton getRegister() {
