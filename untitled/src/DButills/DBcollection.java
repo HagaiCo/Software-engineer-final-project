@@ -75,10 +75,11 @@ public class DBcollection{
 
     public void DBCreate()
         {
+            String windownsUserName = System.getProperty("user.name");
             try
             {
                 System.out.println("Connecting to a selected database...");
-                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
                 Statement stm = connection.createStatement();
                 stm.execute("CREATE TABLE IF NOT EXISTS accounts "+ "(username TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
@@ -93,9 +94,11 @@ public class DBcollection{
         }
 
     public void DBregister(String name, String pass, String email, String phone, String birth, String address) throws SQLException {
-        try {
+        String windownsUserName = System.getProperty("user.name");
+        try
+        {
             System.out.println("Connecting to a selected database...");
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\hagai\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
             System.out.println("Connected database successfully...");
             Statement stm = connection.createStatement();
             stm.execute("INSERT INTO accounts" + "(name, pass, email, phone, birth, address)" +
