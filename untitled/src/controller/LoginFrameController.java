@@ -65,24 +65,22 @@ public class LoginFrameController {
                 String sqlQuary = "SELECT username FROM accounts WHERE username = '"+Username+"' AND pass = '"+pass+"'";
                 PreparedStatement ps = connection.prepareStatement(sqlQuary);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next())
-                {
+                if (rs.next()) {
                     System.out.println("you have successfully logged in to " + rs.getString("username") + "\n");
                     ps.close();
                     connection.close();
                     return true;
                 }
-                else
-                    {
+                else {
                     System.out.println("The user or the password doesn't match!");
                     ps.close();
                     connection.close();
                     return false;
-                    }
+                }
             }
             catch (SQLException e)
             {
-                System.out.println("שם המשתמש או הסיסמה אינם מתאימים" + e.getMessage());
+                System.out.println(e.getMessage());
                 return false;
             }
         }
