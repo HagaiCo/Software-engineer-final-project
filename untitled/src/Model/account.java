@@ -1,19 +1,8 @@
-import java.security
 
-
-
-public class Account
+package Model;
+public class account
 {
 
-
-}
-
-
-
-
-
-public class account1
-{
     private String username;//שם משתמש
     private String password;//סיסמא
     private String phone;//מספר טלפון

@@ -1,10 +1,6 @@
 package viewer;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import static com.sun.glass.ui.Cursor.setVisible;
 
 public class Log_in extends JFrame {
     private JPanel LoginFrame;
@@ -18,7 +14,6 @@ public class Log_in extends JFrame {
 
     public Log_in() {
         super("Donation-Program");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300,300,800,500);
         getContentPane().add(LoginFrame);
         setVisible(true);

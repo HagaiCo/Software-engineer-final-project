@@ -1,3 +1,5 @@
+package Model;
+
 public class company_id
 {
     private static Integer sum_id=0;//סטאטיק שיעזור לנו לעשות id

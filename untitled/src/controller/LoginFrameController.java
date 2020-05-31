@@ -48,7 +48,7 @@ public class LoginFrameController {
         {
             JOptionPane.showMessageDialog(null,
                     "we need to have a DataBase first",
-                    "No Resources",
+                    "Hagai The Man",
                     JOptionPane.WARNING_MESSAGE);
         }
     }
