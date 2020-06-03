@@ -11,6 +11,8 @@ public class account
     private String phone;//מספר טלפון
     private String firstname;//שם פרטי
     private String lastname;//שם משפחה
+    private String email;
+
 
     public account(String username, String password, String phone, String firstname, String lastname) {// בנאי
         this.username = username;

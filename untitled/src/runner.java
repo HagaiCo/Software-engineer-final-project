@@ -1,5 +1,5 @@
 import DButills.DBcollection;
-import controller.mainFrameController;
+import controller.Home_Page_FrameController;
 
 
 public class runner
@@ -7,8 +7,8 @@ public class runner
 
 public static void main (String[] Args)
     {
-        mainFrameController mainFrameController=new mainFrameController();
-        mainFrameController.showHomeFrame();
+        Home_Page_FrameController Home_Page_FrameController =new Home_Page_FrameController();
+        Home_Page_FrameController.showHomeFrame();
         DBcollection DB = new DBcollection();
         DB.DBCreate();
     }

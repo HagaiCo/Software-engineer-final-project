@@ -12,9 +12,8 @@ public class LogInViewer extends JFrame {
     private JLabel pass;
     private JLabel connect;
 
-    public JLabel getConnect() {
-        return connect;
-    }
+
+
 
     public LogInViewer() {
         super("Donation-Program");
@@ -23,6 +22,9 @@ public class LogInViewer extends JFrame {
         setVisible(true);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
+    }
+    public JLabel getConnect() {
+        return connect;
     }
 
     public String getPassword() {
