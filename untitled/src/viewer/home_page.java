@@ -14,7 +14,6 @@ public class home_page extends JFrame {
 
     public home_page() {
         super("Donation-Program");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300,300,800,500);
         getContentPane().add(home_page);
         setVisible(true);
@@ -25,13 +24,10 @@ public class home_page extends JFrame {
         return button_register;
     }
 
-    public JButton getButton_log() {
+        public JButton getButton_log() {
         return button_log;
     }
 
 
-    private void createUIComponents() {
-
-    }
 
 }

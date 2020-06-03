@@ -14,6 +14,7 @@ public class DBcollection{
         private String email;
         private String birth;
         private String phone;
+        private Connection connection;
 
     public DBcollection() {
         this.phone="";
@@ -83,7 +84,8 @@ public class DBcollection{
                 System.out.println("Connected database successfully...");
                 Statement stm = connection.createStatement();
                 stm.execute("CREATE TABLE IF NOT EXISTS accounts "+ "(username TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
-
+                stm.execute("CREATE TABLE IF NOT EXISTS products "+ "(product_name TEXT, product_amount INTEGER , product_location TEXT, product_expration_date TEXT)");
+                stm.execute("CREATE TABLE IF NOT EXISTS  " + "(username TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
                 stm.close();
                 connection.close();
             }
@@ -92,6 +94,7 @@ public class DBcollection{
                 System.out.println("something went wrong " + e.getMessage());
             }
         }
+
 
     public void DBregister(String name, String pass, String email, String phone, String birth, String address) throws SQLException {
         String windownsUserName = System.getProperty("user.name");
@@ -110,4 +113,8 @@ public class DBcollection{
             System.out.println("Can't Connect To DB" + e.getMessage());
         }
     }
+
+
+
+
 }

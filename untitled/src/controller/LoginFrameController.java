@@ -1,14 +1,15 @@
 package controller;
 
+import Model.account;
 import viewer.LogInViewer;
+import viewer.ProductViewer;
 import viewer.Register_page;
 
-import Model.account;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
+import java.sql.SQLException;
 
 public class LoginFrameController {
     private JButton button_register;
@@ -16,6 +17,8 @@ public class LoginFrameController {
     private JLabel StatusMassage;
     private LogInViewer logInViewer;
     Register_page Register_page;
+    ProductViewer productViewer;
+
 
     public LoginFrameController() {
         InitComponent();
@@ -29,12 +32,11 @@ public class LoginFrameController {
 
     }
 
-
-
     private void InitListeners() {
         button_log.addActionListener(new button_logListener());
         button_register.addActionListener(new button_regListener());
     }
+
     private class button_regListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -59,9 +61,12 @@ public class LoginFrameController {
                 if(isSuccessfullyLoggedIn==true) {
                     StatusMassage.setText("Welcome " + userName);
                     StatusMassage.setForeground(Color.green);
+                    productViewer=new ProductViewer(userName);
+                    productViewer.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 }
                 else {
-                    StatusMassage.setText(userName + "is not a registered account");
+                    StatusMassage.setText(userName + " is not a registered account");
+                    JOptionPane.showMessageDialog(logInViewer,"No user found ", "Sorry "+userName ,JOptionPane.INFORMATION_MESSAGE);
                     StatusMassage.setForeground(Color.red);
                 }
 
