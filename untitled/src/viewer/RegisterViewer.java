@@ -25,7 +25,7 @@ public class RegisterViewer extends  JFrame {
     private JButton registerButton;
     private JButton resetButton;
     private JPanel RegisterViewer;
-
+    private JLabel status;
 
 
     public RegisterViewer() {
@@ -36,7 +36,9 @@ public class RegisterViewer extends  JFrame {
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
-
+    public JLabel getStatus() {
+        return status;
+    }
     public String getFirstname() { return FirstNameField.getText(); }
     public String getLastname() { return LastNameField.getText(); }
     public String getUsername() { return UsernameField.getText(); }
@@ -46,6 +48,10 @@ public class RegisterViewer extends  JFrame {
 
     public JButton getRegisterButton() {
         return registerButton;
+    }
+
+    public JCheckBox getAcceptTermsAndConditionsCheckBox() {
+        return acceptTermsAndConditionsCheckBox;
     }
 
     public JButton getResetButton() {

@@ -2,7 +2,6 @@ package controller;
 
 import Model.product;
 import viewer.ProductViewer;
-import viewer.Table;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class ProductListController extends JFrame {
 
-    private Table table;
+    private TableController table;
     private JLabel label;
     private JTable productForCharityTable;
     private JButton addNewProductButton;
@@ -32,23 +31,22 @@ public class ProductListController extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            table= new Table();
+            table= new TableController();
         }
 
     }
     /*private class addNewProductButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Register_page=new Register_page();
-            Register_page.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
+
         }
 
     }
     private class deleteProductButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Register_page=new Register_page();
-            Register_page.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+
         }
 
     }*/

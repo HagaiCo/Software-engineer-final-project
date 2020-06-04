@@ -2,8 +2,7 @@ package controller;
 
 import Model.account;
 import viewer.LogInViewer;
-import viewer.ProductViewer;
-import viewer.Register_page;
+import viewer.RegisterViewer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,8 +15,8 @@ public class LoginFrameController {
     private JButton button_log;
     private JLabel StatusMassage;
     private LogInViewer logInViewer;
-    Register_page Register_page;
-    ProductViewer productViewer;
+    RegisterViewer Register_page;
+    ProductListController productViewer;
 
 
     public LoginFrameController() {
@@ -40,8 +39,8 @@ public class LoginFrameController {
     private class button_regListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Register_page=new Register_page();
-            Register_page.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            Register_page = new RegisterViewer();
+
         }
 
     }
@@ -61,7 +60,7 @@ public class LoginFrameController {
                 if(isSuccessfullyLoggedIn==true) {
                     StatusMassage.setText("Welcome " + userName);
                     StatusMassage.setForeground(Color.green);
-                    productViewer=new ProductViewer(userName);
+                    productViewer=new ProductListController(userName);
                     productViewer.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 }
                 else {

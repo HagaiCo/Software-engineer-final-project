@@ -27,6 +27,9 @@
               <fillsViewportHeight value="true"/>
               <font name="Arial" size="16" style="1"/>
             </properties>
+            <clientProperties>
+              <Table.isFileList class="java.lang.Boolean" value="true"/>
+            </clientProperties>
           </component>
         </children>
       </scrollpane>

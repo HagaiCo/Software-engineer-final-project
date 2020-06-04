@@ -83,9 +83,11 @@ public class DBcollection{
                 Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
                 System.out.println("Connected database successfully...");
                 Statement stm = connection.createStatement();
-                stm.execute("CREATE TABLE IF NOT EXISTS accounts "+ "(username TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
+                stm.execute("CREATE TABLE IF NOT EXISTS accounts "+ "(fname TEXT, lname TEXT, username TEXT, pass TEXT, mobile TEXT, address TEXT)");
                 stm.execute("CREATE TABLE IF NOT EXISTS products "+ "(product_name TEXT, product_amount INTEGER , product_location TEXT, product_expration_date TEXT)");
-                stm.execute("CREATE TABLE IF NOT EXISTS  " + "(username TEXT, pass TEXT, email TEXT, phone INTEGER, birth TEXT, address TEXT)");
+                stm.execute("CREATE TABLE IF NOT EXISTS retail " + "(fname TEXT, lname TEXT, username TEXT, pass TEXT, mobile TEXT, address TEXT)");
+                stm.execute("CREATE TABLE IF NOT EXISTS volunteer " + "(fname TEXT, lname TEXT, username TEXT, pass TEXT, mobile TEXT, address TEXT)");
+                stm.execute("CREATE TABLE IF NOT EXISTS charity " + "(fname TEXT, lname TEXT, username TEXT, pass TEXT, mobile TEXT, address TEXT)");
                 stm.close();
                 connection.close();
             }
@@ -96,7 +98,7 @@ public class DBcollection{
         }
 
 
-    public void DBregister(String name, String pass, String email, String phone, String birth, String address) throws SQLException {
+    public void DbAccountRegister(String fname, String lname, String username, String pass,String mobile, String address) throws SQLException {
         String windownsUserName = System.getProperty("user.name");
         try
         {
@@ -104,8 +106,27 @@ public class DBcollection{
             Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
             System.out.println("Connected database successfully...");
             Statement stm = connection.createStatement();
-            stm.execute("INSERT INTO accounts" + "(username, pass, email, phone, birth, address)" +
-                    "VALUES( '" + name + "', '" + pass + "', '" + email + "', '" + phone + "', '" + birth + "', '" + address + "')");
+            stm.execute("INSERT INTO accounts" + "(fname, lname, username, pass, mobile, address)" +
+                    "VALUES( '" + fname + "', '" + lname + "', '" + username + "', '" + pass + "', '" + mobile + "', '" + address + "')");
+            stm.close();
+
+            
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Can't Connect To DB" + e.getMessage());
+        }
+    }
+
+    public void DbRetailRegister(String fname, String lname, String username, String pass,String mobile, String address) throws SQLException {
+        String windownsUserName = System.getProperty("user.name");
+        try
+        {
+            System.out.println("Connecting to a selected database...");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+            System.out.println("Connected database successfully...");
+            Statement stm = connection.createStatement();
+            stm.execute("INSERT INTO retail" + "(fname, lname, username, pass, mobile, address)" +
+                    "VALUES( '" + fname + "', '" + lname + "', '" + username + "', '" + pass + "', '" + mobile + "', '" + address + "')");
             stm.close();
 
             connection.close();
@@ -114,7 +135,39 @@ public class DBcollection{
         }
     }
 
+    public void DbCharityRegister(String fname, String lname, String username, String pass,String mobile, String address) throws SQLException {
+        String windownsUserName = System.getProperty("user.name");
+        try
+        {
+            System.out.println("Connecting to a selected database...");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+            System.out.println("Connected database successfully...");
+            Statement stm = connection.createStatement();
+            stm.execute("INSERT INTO charity" + "(fname, lname, username, pass, mobile, address)" +
+                    "VALUES( '" + fname + "', '" + lname + "', '" + username + "', '" + pass + "', '" + mobile + "', '" + address + "')");
+            stm.close();
 
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Can't Connect To DB" + e.getMessage());
+        }
+    }
 
+    public void DbVolunteerRegister(String fname, String lname, String username, String pass,String mobile, String address) throws SQLException {
+        String windownsUserName = System.getProperty("user.name");
+        try
+        {
+            System.out.println("Connecting to a selected database...");
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\"+windownsUserName+"\\IdeaProjects\\Software-engineer-final-project\\untitled\\src\\DButills\\account.db");
+            System.out.println("Connected database successfully...");
+            Statement stm = connection.createStatement();
+            stm.execute("INSERT INTO volunteer" + "(fname, lname, username, pass, mobile, address)" +
+                    "VALUES( '" + fname + "', '" + lname + "', '" + username + "', '" + pass + "', '" + mobile + "', '" + address + "')");
+            stm.close();
 
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Can't Connect To DB" + e.getMessage());
+        }
+    }
 }

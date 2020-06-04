@@ -15,7 +15,7 @@
     <children>
       <component id="52aa4" class="javax.swing.JButton" binding="addNewProductButton" default-binding="true">
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-15453280"/>
@@ -35,17 +35,6 @@
           <text value="Product List"/>
         </properties>
       </component>
-      <component id="25adf" class="javax.swing.JButton" binding="deleteProductButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-15453280"/>
-          <font name="Segoe Print" size="18" style="1"/>
-          <foreground color="-15419"/>
-          <text value="Delete Product"/>
-        </properties>
-      </component>
       <component id="a2a08" class="javax.swing.JLabel" binding="label">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
@@ -53,6 +42,17 @@
         <properties>
           <font name="Segoe Print" size="18" style="1"/>
           <text value=""/>
+        </properties>
+      </component>
+      <component id="25adf" class="javax.swing.JButton" binding="deleteProductButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15453280"/>
+          <font name="Segoe Print" size="18" style="1"/>
+          <foreground color="-15419"/>
+          <text value="Delete Product"/>
         </properties>
       </component>
     </children>
