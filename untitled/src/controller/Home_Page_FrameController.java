@@ -5,6 +5,7 @@ import viewer.home_page;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Home_Page_FrameController {
     private home_page home_page;
@@ -39,7 +40,13 @@ public class Home_Page_FrameController {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("pressed");
-            Register=new RegisterController();
+            try {
+                Register=new RegisterController();
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            } catch (ClassNotFoundException classNotFoundException) {
+                classNotFoundException.printStackTrace();
+            }
 
         }
 

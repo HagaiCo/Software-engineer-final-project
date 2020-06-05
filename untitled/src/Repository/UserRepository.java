@@ -1,4 +1,12 @@
 package Repository;
 
-public class UserRepository {
+import Model.account;
+public interface UserRepository {
+
+    void add(account user) throws Exception;
+
+
+
+
+
 }

@@ -14,7 +14,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
+import Repository.UserRepository;
+import Repository.UserRepositoryImpl;
 import Model.account;
 
 
@@ -33,9 +34,9 @@ public class RegisterController {
     private JRadioButton charityRadioButton;
     private JRadioButton retailRadioButton;
     private JRadioButton volunteerRadioButton;
+    UserRepository userRepository = new UserRepositoryImpl();
 
-
-    public RegisterController() {
+    public RegisterController() throws IOException, ClassNotFoundException {
         InitComponent();
         InitListeners();
     }
@@ -65,18 +66,13 @@ public class RegisterController {
     private class registerButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            List<account> users = new ArrayList<account>();
-            users.add(new account(1,UsernameField.getText(),passwordField.getText(),MobileField.getText(),FirstNameField.getText(),LastNameField.getText(),AddressField.getText()));
-            users.add(new account(2,"Dommy","123","123","Domer","mamist","D@D.com"));
-            System.out.println(FirstNameField.getText());
-
-            String filename= "users";
-
-            try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filename))){
-            objectOutputStream.writeObject(users);
-            }catch (IOException exception){
+            try {
+                userRepository.add(new account(1,UsernameField.getText(),passwordField.getText(),MobileField.getText(),FirstNameField.getText(),LastNameField.getText(),AddressField.getText()));
+            } catch (Exception exception) {
                 exception.printStackTrace();
             }
+
+
 
 
 
