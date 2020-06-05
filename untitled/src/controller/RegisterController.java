@@ -73,7 +73,6 @@ public class RegisterController {
             if (terms.isSelected() == true) {
                 DB=new DBcollection();
                 if (charityRadioButton.isSelected() == true) {
-                    JOptionPane.showMessageDialog(RegisterViewer, "You are Charity ", "Welcome " + FirstNameField, JOptionPane.INFORMATION_MESSAGE);
                     fname=FirstNameField.getText();
                     lname=LastNameField.getName();
                     username=UsernameField.getName();
@@ -86,10 +85,10 @@ public class RegisterController {
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
+                    status.setForeground(Color.green);
                     status.setText("connecting you to our Charity Register Form");
                      charity=new CharityRegisterController();
                 } else if (retailRadioButton.isSelected() == true) {
-                    JOptionPane.showMessageDialog(RegisterViewer, "You are a Retail", "Welcome " + FirstNameField, JOptionPane.INFORMATION_MESSAGE);
                     fname=FirstNameField.getText();
                     lname=LastNameField.getName();
                     username=UsernameField.getName();
@@ -102,12 +101,12 @@ public class RegisterController {
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
+                    status.setForeground(Color.green);
                     status.setText("connecting you to our Retail Register Form");
                     retail=new RetailRegisterController();
 
 
                 } else if (volunteerRadioButton.isSelected() == true) {
-                    JOptionPane.showMessageDialog(RegisterViewer, "You are a Voulunteer", "Welcome " + FirstNameField, JOptionPane.INFORMATION_MESSAGE);
                     fname=FirstNameField.getText();
                     lname=LastNameField.getName();
                     username=UsernameField.getName();
@@ -120,10 +119,12 @@ public class RegisterController {
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
+                    status.setForeground(Color.green);
                     status.setText("connecting you to our Volunteer Register Form");
 
                 }
                 else{
+                    status.setForeground(Color.red);
                     status.setText("Make sure you choose your account type");
                 }
 
@@ -132,6 +133,7 @@ public class RegisterController {
 
             }
             else {
+                status.setForeground(Color.red);
                 status.setText("Please accept the"
                         + " terms & conditions..");
             }

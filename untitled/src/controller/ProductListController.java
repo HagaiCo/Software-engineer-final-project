@@ -25,7 +25,6 @@ public class ProductListController extends JFrame {
             productForCharityTable=viewer.getProductForCharityTable();
             productListButton=viewer.getProductListButton();
             productListButton.addActionListener(new productListButton());
-
     }
     private class productListButton implements ActionListener {
 

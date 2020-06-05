@@ -32,6 +32,9 @@ public class CharityRegisterController {
     private class button_subListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            Cname=name.toString();
+            Caddress=address.toString();
+            Cmobile=mobile.toString();
 
 
         }
