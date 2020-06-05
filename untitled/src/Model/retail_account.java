@@ -6,9 +6,8 @@ public class retail_account extends account {
     private retail_org retail_org; //שייוך המשתמש לחברה
 
 
-    public retail_account(String username, String password, String phone, String firstname, String lastname) {
-        super(username, password, phone, firstname, lastname);
-
+    public retail_account(int id, String username, String password, String phone, String firstname, String lastname, String email) {
+        super(id, username, password, phone, firstname, lastname, email);
     }
 
     public Model.retail_org getRetail_org() {

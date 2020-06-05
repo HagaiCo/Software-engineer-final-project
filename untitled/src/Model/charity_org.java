@@ -1,6 +1,6 @@
 package Model;
 
-public class charity_org extends account
+public class charity_org
 {
 
     private String Charity_name;//שם של ארגון הצדקה
@@ -8,8 +8,10 @@ public class charity_org extends account
     private Integer charity_phone;
 
 
-    public charity_org(String username, String password, String phone, String firstname, String lastname) {
-        super(username, password, phone, firstname, lastname);
+    public charity_org(String charity_name, String charity_address, Integer charity_phone) {
+        Charity_name = charity_name;
+        this.charity_address = charity_address;
+        this.charity_phone = charity_phone;
     }
 
     public String getCharity_name() {

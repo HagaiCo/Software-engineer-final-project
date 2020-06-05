@@ -1,11 +1,12 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.sql.*;
 
-public class account
+public class account implements Serializable
 {
-
+    private int id;
     private String username;//שם משתמש
     private String password;//סיסמא
     private String phone;//מספר טלפון
@@ -14,13 +15,14 @@ public class account
     private String email;
 
 
-    public account(String username, String password, String phone, String firstname, String lastname) {// בנאי
+    public account(int id, String username, String password, String phone, String firstname, String lastname, String email) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.firstname = firstname;
-        this.lastname = lastname;//
-
+        this.lastname = lastname;
+        this.email = email;
     }
 
     public account(String username, String password) {

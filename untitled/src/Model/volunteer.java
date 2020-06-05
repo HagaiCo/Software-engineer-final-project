@@ -5,8 +5,8 @@ public class volunteer extends account{
     private Integer Experience;
     private boolean driving_license;
 
-    public volunteer(String username, String password, String phone, String firstname, String lastname) {
-        super(username, password, phone, firstname, lastname);
+    public volunteer(int id, String username, String password, String phone, String firstname, String lastname, String email) {
+        super(id, username, password, phone, firstname, lastname, email);
     }
 
     public Integer getAge() {
