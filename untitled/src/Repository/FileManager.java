@@ -7,7 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class FileManager<T> {
@@ -23,19 +25,19 @@ public class FileManager<T> {
         return file.exists();
     }
 
-    public void write(Set<T> object) throws IOException {
+    public void write(List<T> object) throws IOException {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.filename))) {
             objectOutputStream.writeObject(object);
         }
     }
 
-    public Set<T> read() throws FileNotFoundException, IOException, ClassNotFoundException {
-        if (!isFileExists()) { // Return empty set when file is not exists
-            return new HashSet<T>();
+    public List<T> read() throws FileNotFoundException, IOException, ClassNotFoundException {
+        if (!isFileExists()) { // Return empty List when file is not exists
+           return new ArrayList<>();
         }
 
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(this.filename))) {
-            return (Set<T>) objectInputStream.readObject();
+            return (List<T>) objectInputStream.readObject();
         }
     }
 }
