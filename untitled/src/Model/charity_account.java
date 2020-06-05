@@ -4,9 +4,8 @@ public class charity_account extends account
 {
     private charity_org charity;
 
-    public charity_account(String username, String password, String phone, String firstname, String lastname) {
-        super(username, password, phone, firstname, lastname);
-
+    public charity_account(int id, String username, String password, String phone, String firstname, String lastname, String email) {
+        super(id, username, password, phone, firstname, lastname, email);
     }
 
     public charity_org getCharity() {

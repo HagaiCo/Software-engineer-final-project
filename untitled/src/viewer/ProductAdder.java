@@ -1,7 +1,5 @@
 package viewer;
 
-import DButills.DBcollection;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -246,7 +244,7 @@ public class ProductAdder
                 String data3 = "Address : " + tadd.getText();
                 tout.setText(data + data2 + data3);
                 tout.setEditable(false);
-                DBcollection DB=new DBcollection();//Creating a new DB to Register a new one into the DB
+
                 strname=tname.getText();
                 strpass=password.getText();
                 strphone=tmno.getText();
@@ -255,11 +253,7 @@ public class ProductAdder
                 strbirth=(String)date.getSelectedItem()
                         + "/" + (String)month.getSelectedItem()
                         + "/" + (String)year.getSelectedItem();
-                try {
-                    DB.DBregister(strname, strpass, stremail, strphone, strbirth, straddress);
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+
                 res.setText("Registration Successfully..");
             }
             else {

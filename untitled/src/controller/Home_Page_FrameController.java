@@ -38,6 +38,7 @@ public class Home_Page_FrameController {
     private class button_regListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            System.out.println("pressed");
             Register=new RegisterController();
 
         }
