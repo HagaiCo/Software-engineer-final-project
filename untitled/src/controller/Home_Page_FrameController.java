@@ -57,7 +57,13 @@ public class Home_Page_FrameController {
             public void actionPerformed(ActionEvent e)
 
             {
-              LOGIN=new LoginFrameController();
+                try {
+                    LOGIN=new LoginFrameController();
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                } catch (ClassNotFoundException classNotFoundException) {
+                    classNotFoundException.printStackTrace();
+                }
             }
     }
 }
