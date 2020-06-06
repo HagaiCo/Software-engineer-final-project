@@ -15,6 +15,7 @@ public class account implements Serializable
     private String email;
 
 
+
     public account(int id, String username, String password, String phone, String firstname, String lastname, String email) {
         this.id = id;
         this.username = username;
@@ -70,6 +71,9 @@ public class account implements Serializable
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+
+
 
     public Boolean ValidateLoginRequest (String Username, String pass) throws SQLException
     {
