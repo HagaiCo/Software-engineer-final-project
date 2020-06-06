@@ -68,9 +68,11 @@ public class RegisterController {
         public void actionPerformed(ActionEvent e) {
             try {
                 userRepository.add(new account(1,UsernameField.getText(),passwordField.getText(),MobileField.getText(),FirstNameField.getText(),LastNameField.getText(),AddressField.getText()));
+                RegisterViewer.setVisible(false);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
+
 
 
 

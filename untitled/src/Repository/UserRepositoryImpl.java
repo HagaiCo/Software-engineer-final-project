@@ -4,6 +4,7 @@ import Model.account;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class UserRepositoryImpl implements UserRepository{
 
@@ -23,4 +24,17 @@ public class UserRepositoryImpl implements UserRepository{
         this.fileManager.write(this.users);
 
     }
+
+    @Override
+    public boolean loginSuccess(String username, String password) {
+        account check =new account(username,password);
+            for (account user : users) {
+                System.out.println(user.getUsername()+ "==" + check.getUsername());
+                System.out.println(user.getPassword()+ "==" + check.getPassword());
+                if( Objects.equals(user.getUsername(), check.getUsername()) &&  Objects.equals(user.getPassword(), check.getPassword())  )
+
+                    return  true;
+            }
+        return false;
+        }
 }
