@@ -1,23 +1,19 @@
 package controller;
 
-import Model.account;
+import Repository.UserRepository;
+import Repository.UserRepositoryImpl;
 import viewer.LogInViewer;
 import viewer.ProductViewer;
 import viewer.Register_page;
-import Repository.UserRepository;
-import Repository.UserRepositoryImpl;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class LoginFrameController {
     private JButton button_register;
     private JButton button_log;
-    private JLabel StatusMassage;
     private LogInViewer logInViewer;
     Register_page Register_page;
     ProductViewer productViewer;
@@ -55,20 +51,20 @@ public class LoginFrameController {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            StatusMassage =logInViewer.getConnect();
             String username = logInViewer.getUsername();
             String password = logInViewer.getPassword();
             //account  = new account(username,password);
-            if(userRepository.loginSuccess(username,password)) {
+            if(userRepository.loginSuccess(username,password))
+            {
                 //retail/charity page is opened.
-                StatusMassage.setText("Logged IN");
-            System.out.println("loged in");
+                logInViewer.SetStatusMassage("Logged in");
+                System.out.println("logged in");
             }
-            else{
-                System.out.println("NOPE");
-                StatusMassage.setText("wrong username or password");
-
+            else {
+                System.out.println("User name or password doesn't match !");
+                logInViewer.SetStatusMassage("User name or password doesn't match !");
             }
+            logInViewer.GetStatusMassage();
             /*try
             {
                Boolean isSuccessfullyLoggedIn = object.ValidateLoginRequest(userName,pass);
