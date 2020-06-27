@@ -57,8 +57,8 @@ public class LoginFrameController {
             if(userRepository.loginSuccess(username,password))
             {
                 //retail/charity page is opened.
-                logInViewer.SetStatusMassage("Logged in");
                 System.out.println("logged in");
+                logInViewer.SetStatusMassage("Logged in");
             }
             else {
                 System.out.println("User name or password doesn't match !");
