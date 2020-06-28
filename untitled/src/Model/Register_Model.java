@@ -1,16 +1,14 @@
 package Model;
 
-import view.Register_View;
+import view.RegisterView;
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class Register_Model {
 
     private JButton registerButton;
     private JButton resetButton;
-    private Register_View register_view;
+    private RegisterView register_view;
     private JTextField LastNameField;
     private JTextField UsernameField;
     private JTextField MobileField;
@@ -20,7 +18,7 @@ public class Register_Model {
     private JRadioButton charityRadioButton;
     private JRadioButton retailRadioButton;
     private JRadioButton volunteerRadioButton;
-    UserRepository userRepository = new UserRepositoryImpl();
+    IUserRepository userRepository = new UserRepositoryImpl();
 
 
     public Register_Model() throws IOException, ClassNotFoundException {

@@ -1,9 +1,10 @@
 package view;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class LogIn_View extends JFrame {
+public class LogInView extends JFrame {
     private JPanel LoginFrame;
     private JPasswordField passwordField;
     private JLabel Label;
@@ -14,9 +15,10 @@ public class LogIn_View extends JFrame {
 
 
 
-    public LogIn_View() {
+    public LogInView() {
         super("Donation-Program");
         setBounds(300,300,800,500);
+        centreWindow(this);
         getContentPane().add(LoginFrame);
         //setVisible(true);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -39,5 +41,12 @@ public class LogIn_View extends JFrame {
 
     public void addButton_registerListener(ActionListener mal) {
         register_button.addActionListener(mal);
+    }
+
+    public static void centreWindow(Window frame) {
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
+        frame.setLocation(x, y);
     }
 }

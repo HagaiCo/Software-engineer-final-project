@@ -1,12 +1,9 @@
 package Model;
 
 import controller.RegisterController;
-import view.LogIn_View;
-import view.Register_View;
+import view.LogInView;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class Login_Model {
@@ -14,9 +11,9 @@ public class Login_Model {
     private JButton button_register;
     private JButton button_log;
     private JLabel StatusMassage;
-    private LogIn_View logInView;
+    private LogInView logInView;
     private RegisterController registerController;
-    UserRepository userRepository = new UserRepositoryImpl();
+    IUserRepository userRepository = new UserRepositoryImpl();
 
     public Login_Model() throws IOException, ClassNotFoundException {
     }

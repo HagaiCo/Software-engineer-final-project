@@ -1,10 +1,6 @@
 package Model;
 
-import Model.account;
-
-import java.util.List;
-
-public interface UserRepository {
+public interface IUserRepository {
 
     void add(account user) throws Exception;
 

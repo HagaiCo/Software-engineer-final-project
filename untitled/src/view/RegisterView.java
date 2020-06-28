@@ -3,7 +3,7 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class Register_View extends  JFrame {
+public class RegisterView extends  JFrame {
     private JLabel FirstName_lable;
     private JLabel LastName_lable;
     private JTextField LastNameField;
@@ -29,7 +29,7 @@ public class Register_View extends  JFrame {
 
 
 
-    public Register_View() {
+    public RegisterView() {
         super("Donation-Program");
         setBounds(300,300,800,500);
         getContentPane().add(RegisterViewer);

@@ -8,7 +8,7 @@ public class retail_org
     private String retail_name;// שם החברה
     private String retail_address;
     private Integer retail_phone;
-    private ArrayList<product> product_list=new ArrayList<product>();
+    private ArrayList<Products> products_list =new ArrayList<Products>();
 
 
     public retail_org(String retail_name, String retail_address, Integer retail_phone) {
