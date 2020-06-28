@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class product
+public class Products
 {
 
     private String product_name;
@@ -15,14 +15,14 @@ public class product
     private boolean matched= false;
     private Connection connection;
 
-    public product()
+    public Products()
     {
         this.product_name = "";
         this.product_quantity = 0;
         this.experation_day = "";
     }
 
-    public product(String product_name, Integer product_quantity, String experation_day) {
+    public Products(String product_name, Integer product_quantity, String experation_day) {
         this.product_name = product_name;
         this.product_quantity = product_quantity;
         this.experation_day = experation_day;
@@ -67,9 +67,9 @@ public class product
             Statement ps = connection.createStatement();
             ResultSet rs = ps.executeQuery(sqlQuary);
 
-            List<product> products = new ArrayList<>();
+            List<Products> products = new ArrayList<>();
             while (rs.next()) {
-                product product = new product(rs.getString("product_name"),rs.getInt("product_amount"),rs.getString("product_expration_date"));
+                Products Products = new Products(rs.getString("product_name"),rs.getInt("product_amount"),rs.getString("product_expration_date"));
                 String N=rs.getString("product_name");
                  Integer A=rs.getInt("product_amount");
                  String E= rs.getString("product_expration_date");

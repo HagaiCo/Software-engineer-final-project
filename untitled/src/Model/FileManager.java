@@ -1,16 +1,8 @@
 package Model;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class FileManager<T> {
 
@@ -36,8 +28,47 @@ public class FileManager<T> {
            return new ArrayList<>();
         }
 
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(this.filename))) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(this.filename)))
+        {
             return (List<T>) objectInputStream.readObject();
+        }
+    }
+    public String[] readCSV()
+    {
+        int i = 0;
+        String csvFile = filename;
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = "\n";
+        String[] productsData = new String[3];
+        String[] tmp = new String[3];
+        try
+        {
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null)
+            {
+                tmp = line.split(cvsSplitBy);
+                productsData[i++] =tmp[0];
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return productsData;
         }
     }
 }

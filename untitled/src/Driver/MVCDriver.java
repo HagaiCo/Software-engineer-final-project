@@ -6,20 +6,18 @@ import Model.Register_Model;
 import controller.HomePageController;
 import controller.LogInController;
 import controller.RegisterController;
-import view.HomePage_View;
-import view.LogIn_View;
-import view.Register_View;
+import view.HomePageView;
+import view.LogInView;
+import view.RegisterView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import controller.Test_PageController;
-import view.Test_Page;
 
 public class MVCDriver {
-    public static Register_View register_view;
+    public static RegisterView register_view;
     public static Register_Model register_model;
     public static RegisterController registerController;
-    public static LogIn_View logIn_view;
+    public static LogInView logIn_view;
     public static Login_Model login_model;
     public static LogInController logInController;
 
@@ -27,12 +25,12 @@ public class MVCDriver {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        HomePage_View homePage_view=new HomePage_View();
+        HomePageView homePage_view=new HomePageView();
         HomePage_Model homePage_model=new HomePage_Model();
         HomePageController homePageController =new HomePageController(homePage_model,homePage_view);
         homePage_view.showHomePageView();
 
-        LogIn_View logIn_view=new LogIn_View();
+        LogInView logIn_view=new LogInView();
         Login_Model login_model=new Login_Model();
         LogInController logInController=new LogInController(login_model,logIn_view);
 
@@ -46,7 +44,7 @@ public class MVCDriver {
     static class button_registerListener implements ActionListener {
         public void actionPerformed(ActionEvent e){
             System.out.println("register from driver");
-            register_view=new Register_View();
+            register_view=new RegisterView();
             try {
                 register_model=new Register_Model();
             } catch (IOException exception) {
@@ -63,7 +61,7 @@ public class MVCDriver {
     static class button_logListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             System.out.println("login from driver");
-            logIn_view=new LogIn_View();
+            logIn_view=new LogInView();
             try {
                 login_model=new Login_Model();
             } catch (IOException exception) {

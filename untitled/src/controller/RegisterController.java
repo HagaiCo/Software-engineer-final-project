@@ -2,7 +2,7 @@ package controller;
 
 
 import Model.Register_Model;
-import view.Register_View;
+import view.RegisterView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,9 +10,9 @@ import java.awt.event.ActionListener;
 public class RegisterController {
 
     private Register_Model register_model;
-    private Register_View register_view;
+    private RegisterView register_view;
 
-    public RegisterController(Register_Model register_model, Register_View register_view) {
+    public RegisterController(Register_Model register_model, RegisterView register_view) {
         this.register_model = register_model;
         this.register_view = register_view;
 
