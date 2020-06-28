@@ -10,6 +10,7 @@ public class retail_org
     private Integer retail_phone;
     private ArrayList<product> product_list=new ArrayList<product>();
 
+
     public retail_org(String retail_name, String retail_address, Integer retail_phone) {
         this.retail_name = retail_name;
         this.retail_address = retail_address;
