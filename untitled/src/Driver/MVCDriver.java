@@ -12,6 +12,8 @@ import view.Register_View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import controller.Test_PageController;
+import view.Test_Page;
 
 public class MVCDriver {
     public static Register_View register_view;
@@ -22,9 +24,10 @@ public class MVCDriver {
     public static LogInController logInController;
 
 
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-        HomePage_View homePage_view=new HomePage_View();
+       /* HomePage_View homePage_view=new HomePage_View();
         HomePage_Model homePage_model=new HomePage_Model();
         HomePageController homePageController =new HomePageController(homePage_model,homePage_view);
         homePage_view.showHomePageView();
@@ -34,8 +37,10 @@ public class MVCDriver {
         LogInController logInController=new LogInController(login_model,logIn_view);
 
         homePageController.getHomePage_view().addButton_registerListener(new button_registerListener());
-        homePageController.getHomePage_view().addButton_loginListener(new button_logListener());
+        homePageController.getHomePage_view().addButton_loginListener(new button_logListener());*/
 
+        Test_Page test_page=new Test_Page();
+        Test_PageController test_pageController=new Test_PageController();
 
 
     }
