@@ -1,6 +1,6 @@
 import Model.account;
-import Repository.UserRepository;
-import Repository.UserRepositoryImpl;
+import Model.UserRepository;
+import Model.UserRepositoryImpl;
 import org.junit.Test;
 
 import java.io.IOException;
