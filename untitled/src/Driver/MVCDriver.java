@@ -79,6 +79,7 @@ public class MVCDriver {
         public void actionPerformed(ActionEvent e) {
             if(logInController.isLogged_In())
             System.out.println("logged in");
+
             else
                 System.out.println("error");
             //todo: add logged in page here
