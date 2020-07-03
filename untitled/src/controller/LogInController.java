@@ -17,7 +17,7 @@ public class LogInController {
         this.logIn_view = logIn_view;
 
         logIn_view.addButton_loginSubmitListener(new button_logSubmitListener());
-        //  logIn_view.addButton_registerListener(new register_buttonListener());
+
     }
 
     public boolean isLogged_In() {
