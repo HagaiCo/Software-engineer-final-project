@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ProductRepositoryImpl implements IProductRepository {
@@ -10,7 +11,7 @@ public class ProductRepositoryImpl implements IProductRepository {
     public ProductRepositoryImpl() throws IOException, ClassNotFoundException
     {
         this.fileManager = new FileManager<Products>("Products.csv");
-        this.products = this.fileManager.readCSV();
+        this.products = this.fileManager.readCSV(",");
     }
 
     @Override
@@ -19,9 +20,23 @@ public class ProductRepositoryImpl implements IProductRepository {
 
     }
 
+
     @Override
     public String[] getProductList() throws IOException
     {
+        this.products = this.fileManager.readCSV(",");
         return products;
+    }
+
+    @Override
+    public String GetInfoByIndex(int index) throws FileNotFoundException {
+        return this.fileManager.GetInfoByIndex(index);
+    }
+
+
+
+    @Override
+    public void RemoveFromFile(int index) throws IOException {
+        this.fileManager.RemoveFromFile(index);
     }
 }
