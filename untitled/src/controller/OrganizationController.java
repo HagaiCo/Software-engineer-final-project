@@ -2,6 +2,7 @@ package controller;
 
 import Model.IOrganizationModel;
 import Model.OrganizationModel;
+import Model.Products;
 import view.OrganizationView;
 
 import javax.swing.*;
@@ -11,19 +12,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serializable;
 
 
-public class OrganizationController
+public class OrganizationController implements Serializable
 {
     private OrganizationView ProductList_View;
     private JList productJList;
-    IOrganizationModel productRepository = new OrganizationModel();
+    IOrganizationModel organizationModel = new OrganizationModel();
 
     private String[] productsList;
-
+    private String[] addedList;
     private int index;
     private String productName=null;
     private ListSelectionModel lsm;
+    String productInfoArr[]= new String[3];
 
     public OrganizationController() throws IOException, ClassNotFoundException
     {
@@ -31,8 +34,7 @@ public class OrganizationController
 
     }
 
-    private void InitComponent() throws IOException
-    {
+    private void InitComponent() throws IOException, ClassNotFoundException {
         ProductList_View = new OrganizationView();
         UpdateList();
         ProductList_View.addProduct_listListener(new product_listListener());
@@ -40,9 +42,11 @@ public class OrganizationController
         ProductList_View.AddRefresh_Listener(new AddRefresh_Listener());
     }
 
-    public void UpdateList() throws IOException {
-        productsList = productRepository.getProductList();
+    public void UpdateList() throws IOException, ClassNotFoundException {
+        productsList = organizationModel.getProductList();
         ProductList_View.SetProductsOnScreen(productsList);
+        addedList=organizationModel.getAddedList();
+        ProductList_View.SetAddedList(addedList);
     }
 
     class product_listListener implements ListSelectionListener {
@@ -52,23 +56,17 @@ public class OrganizationController
             lsm = (ListSelectionModel)lis.getSource();
             index=lsm.getMaxSelectionIndex();
             String productInfo= null;
-            String productInfoArr[]= new String[3];
-            String value = ProductList_View.getSelectedValue();
-
-            if(index!=-1) {
+            if(index!=-1 ) {
                 try {
-                    productInfo = productRepository.GetInfoByIndex(index);
+                    productInfo = organizationModel.GetInfoByIndex(index);
+                    productInfoArr=productInfo.split(",");
+                    ProductList_View.SetProductNameText(productInfoArr[0]);
+                    ProductList_View.SetProductAmountText(productInfoArr[1]);
+                    ProductList_View.SetProductDateText(productInfoArr[2]);
+                    productName=productInfoArr[0];
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-
-                System.out.println(index + ". " + value);
-                productInfoArr=productInfo.split(",");
-                ProductList_View.SetProductNameText(productInfoArr[0]);
-                ProductList_View.SetProductAmountText(productInfoArr[1]);
-                ProductList_View.SetProductDateText(productInfoArr[2]);
-                productName=productInfoArr[0];
-
             }
         }
     }
@@ -76,7 +74,7 @@ public class OrganizationController
     class AddRefresh_Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             try {
-                productsList = productRepository.getProductList();
+                productsList = organizationModel.getProductList();
                 ProductList_View.UpdateProductsOnScreen(productsList);
             } catch (IOException exception) {
                 exception.printStackTrace();
@@ -88,20 +86,15 @@ public class OrganizationController
 
     class AddProduct_Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            //DefaultListModel model = ProductList_View.getProductList().getModel();
-           // model.remove(index);
-            //ProductList_View.UpdateProductsOnScreen(productsList);
            try {
-               productRepository.RemoveFromFile(index);
-               productsList = productRepository.getProductList();
-               ProductList_View.UpdateProductsOnScreen(productsList);
-              // productsList = productRepository.getProductList();
-              // ProductList_View.UpdateProductsOnScreen(productsList);
+               organizationModel.AddProduct(new Products(productInfoArr[0],productInfoArr[1],productInfoArr[2]));
+               organizationModel.RemoveFromFile(index);
+               UpdateList();
             } catch (IOException fileNotFoundException) {
                 fileNotFoundException.printStackTrace();
-            }
-
-
+            } catch (Exception exception) {
+               exception.printStackTrace();
+           }
         }
     }
 }

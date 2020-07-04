@@ -2,41 +2,60 @@ package Model;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrganizationModel implements IOrganizationModel {
 
     private String[] products;
     private FileManager<Products> fileManager;
     Object test = "test";
+    private FileManager<Products> addedProductsManager;
+    private List<Products> addedProducts=new ArrayList<Products>();
+
     public OrganizationModel() throws IOException, ClassNotFoundException
     {
-        this.fileManager = new FileManager<Products>("Products.csv");
-        this.products = this.fileManager.readCSV(",");
+        this.fileManager = new FileManager<Products>();
+        this.products = this.fileManager.readCSV(",", "Products.csv");
+        //this.addedProducts=this.fileManager.read("AddedProducts");
+
+    }
+
+
+    @Override
+    public void AddProduct(Products product) throws IOException {
+        this.addedProducts.add(product);
+        this.fileManager.write(this.addedProducts, "AddedProducts");
     }
 
     @Override
-    public void add(Products user) throws Exception
-    {
-
+    public String[] getAddedList() throws IOException, ClassNotFoundException {
+        int i=0;
+        this.addedProducts=this.fileManager.read("AddedProducts");
+        String [] addedList=new String[addedProducts.size()];
+        for(Products product : addedProducts)
+            addedList[i++]=product.getProduct_name();
+        return addedList ;
     }
+
 
 
     @Override
     public String[] getProductList() throws IOException
     {
-        this.products = this.fileManager.readCSV(",");
+        this.products = this.fileManager.readCSV(",", "Products.csv");
         return products;
     }
 
+
     @Override
     public String GetInfoByIndex(int index) throws FileNotFoundException {
-        return this.fileManager.GetInfoByIndex(index);
+        return this.fileManager.GetInfoByIndex(index, "Products.csv");
     }
-
 
 
     @Override
     public void RemoveFromFile(int index) throws IOException {
-        this.fileManager.RemoveFromFile(index);
+        this.fileManager.RemoveFromFile(index, "Products.csv");
     }
 }

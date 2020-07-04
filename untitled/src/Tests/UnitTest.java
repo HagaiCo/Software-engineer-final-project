@@ -17,7 +17,7 @@ public class UnitTest {
     public void LoginTest() throws Exception {
         String username = "yosi";
         String password = "Yeswecan";
-        userRepository.add(new account(1, username, password, "", "", "", ""));
+        userRepository.add(new account(1, username, password, "", "", "", "",""));
 
         Boolean result = userRepository.loginSuccess(username,password);
         Assert.assertTrue(result);

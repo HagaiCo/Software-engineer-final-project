@@ -22,11 +22,11 @@ public class RegisterView extends  JFrame {
     private JComboBox dayCombo;
     private JComboBox monthCombo;
     private JComboBox yearCombo;
-    private JCheckBox acceptTermsAndConditionsCheckBox;
+    private JCheckBox termsCheckBox;
     private JButton registerButton;
     private JButton resetButton;
     private JPanel RegisterViewer;
-
+    private JLabel termsAlertText;
 
 
     public RegisterView() {
@@ -50,9 +50,39 @@ public class RegisterView extends  JFrame {
         this.setVisible(true);
     }
 
+    public boolean TermsAccepted(){
+        if(termsCheckBox.isSelected())
+            return true;
+        return false;
+    }
 
+    public void AlertTerms(){
+        termsAlertText.setText("Please accept terms and conditions");
+    }
 
-    public void addRegisterSubmitListener(ActionListener mal){registerButton.addActionListener(mal);}
+    public String GetType(){
+        if(charityRadioButton.isSelected())
+            return "Charity";
+        if(retailRadioButton.isSelected())
+            return "Retail";
+        else return "Volunteer";
+    }
+
+    public JRadioButton getCharityRadioButton() {
+        return charityRadioButton;
+    }
+
+    public JRadioButton getRetailRadioButton() {
+        return retailRadioButton;
+    }
+
+    public JRadioButton getVolunteerRadioButton() {
+        return volunteerRadioButton;
+    }
+
+    public void addRegisterSubmitListener(ActionListener mal){
+
+        registerButton.addActionListener(mal);}
 
 
 }
