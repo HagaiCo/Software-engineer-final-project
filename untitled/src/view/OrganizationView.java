@@ -5,18 +5,19 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class ProductListView extends JFrame{
+public class OrganizationView extends JFrame{
     private JPanel Test_Page;
     private JList productList;
     private JLabel productNameText;
     private JLabel productAmountText;
     private JLabel productDateText;
-    private JButton add_button;
+    private JButton addProduct_button;
+    private JButton refreshList_Button;
 
     private ListSelectionModel listSelectionModel;
 
 
-    public ProductListView() {
+    public OrganizationView() {
         super("Donation-Program");
         setBounds(300,300,800,500);
         getContentPane().add(Test_Page);
@@ -64,8 +65,12 @@ public class ProductListView extends JFrame{
         productDateText.setText(text);
     }
 
-    public void addAddButton_Listener(ActionListener mal){
-        add_button.addActionListener(mal);
+    public void AddButton_Listener(ActionListener mal){
+        addProduct_button.addActionListener(mal);
+    }
+
+    public void AddRefresh_Listener(ActionListener mal){
+        refreshList_Button.addActionListener(mal);
     }
 
 

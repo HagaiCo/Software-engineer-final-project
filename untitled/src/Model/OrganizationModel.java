@@ -3,12 +3,12 @@ package Model;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ProductRepositoryImpl implements IProductRepository {
+public class OrganizationModel implements IOrganizationModel {
 
     private String[] products;
     private FileManager<Products> fileManager;
     Object test = "test";
-    public ProductRepositoryImpl() throws IOException, ClassNotFoundException
+    public OrganizationModel() throws IOException, ClassNotFoundException
     {
         this.fileManager = new FileManager<Products>("Products.csv");
         this.products = this.fileManager.readCSV(",");

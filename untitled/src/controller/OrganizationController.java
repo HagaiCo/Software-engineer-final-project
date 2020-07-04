@@ -1,8 +1,8 @@
 package controller;
 
-import Model.IProductRepository;
-import Model.ProductRepositoryImpl;
-import view.ProductListView;
+import Model.IOrganizationModel;
+import Model.OrganizationModel;
+import view.OrganizationView;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -13,11 +13,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-public class ProductsListController
+public class OrganizationController
 {
-    private ProductListView ProductList_View;
+    private OrganizationView ProductList_View;
     private JList productJList;
-    IProductRepository productRepository = new ProductRepositoryImpl();
+    IOrganizationModel productRepository = new OrganizationModel();
 
     private String[] productsList;
 
@@ -25,7 +25,7 @@ public class ProductsListController
     private String productName=null;
     private ListSelectionModel lsm;
 
-    public ProductsListController() throws IOException, ClassNotFoundException
+    public OrganizationController() throws IOException, ClassNotFoundException
     {
         InitComponent();
 
@@ -33,10 +33,11 @@ public class ProductsListController
 
     private void InitComponent() throws IOException
     {
-        ProductList_View = new ProductListView();
+        ProductList_View = new OrganizationView();
         UpdateList();
         ProductList_View.addProduct_listListener(new product_listListener());
-        ProductList_View.addAddButton_Listener(new addButton_Listener());
+        ProductList_View.AddButton_Listener(new AddProduct_Listener());
+        ProductList_View.AddRefresh_Listener(new AddRefresh_Listener());
     }
 
     public void UpdateList() throws IOException {
@@ -72,27 +73,35 @@ public class ProductsListController
         }
     }
 
+    class AddRefresh_Listener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                productsList = productRepository.getProductList();
+                ProductList_View.UpdateProductsOnScreen(productsList);
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+
+        }
+    }
 
 
-    class addButton_Listener implements ActionListener {
+    class AddProduct_Listener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             //DefaultListModel model = ProductList_View.getProductList().getModel();
            // model.remove(index);
             //ProductList_View.UpdateProductsOnScreen(productsList);
-
            try {
                productRepository.RemoveFromFile(index);
                productsList = productRepository.getProductList();
                ProductList_View.UpdateProductsOnScreen(productsList);
               // productsList = productRepository.getProductList();
               // ProductList_View.UpdateProductsOnScreen(productsList);
-
-
             } catch (IOException fileNotFoundException) {
                 fileNotFoundException.printStackTrace();
             }
 
-            //System.out.println(index);
+
         }
     }
 }

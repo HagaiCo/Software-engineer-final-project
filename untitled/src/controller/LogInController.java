@@ -35,7 +35,8 @@ public class LogInController {
             Logged_In = login_model.validateUser(logIn_view.getUsername(),logIn_view.getPassword());
             try
             {
-                ProductsListController test = new ProductsListController();
+                OrganizationController organizationController = new OrganizationController();
+                // TODO: 7/4/2020 //avia open page
             }
             catch (IOException ioException)
             {
@@ -43,7 +44,7 @@ public class LogInController {
             } catch (ClassNotFoundException classNotFoundException) {
                 classNotFoundException.printStackTrace();
             }
-            //ProductListView test1 = new ProductListView();
+            //OrganizationView test1 = new OrganizationView();
         }
     }
 }
