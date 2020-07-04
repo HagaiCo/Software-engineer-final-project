@@ -24,9 +24,10 @@ public class Register_Model {
     public Register_Model() throws IOException, ClassNotFoundException {
     }
 
-    public void addUser(String username,String password,String mobile,String firstName,String lastName,String address) {
+    public void addUser(String username,String password,String mobile,String firstName,String lastName,String address,String type) {
         try {
-            userRepository.add(new account(1,username,password,mobile,firstName,lastName,address));
+            userRepository.add(new account(1,username,password,mobile,firstName,lastName,address,type));
+
         } catch (Exception e) {
             e.printStackTrace();
         }

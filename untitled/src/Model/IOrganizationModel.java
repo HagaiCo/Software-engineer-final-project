@@ -5,7 +5,9 @@ import java.io.IOException;
 
 public interface IOrganizationModel {
 
-    void add(Products product) throws Exception;
+    void AddProduct(Products product) throws IOException;
+
+    String[] getAddedList() throws IOException, ClassNotFoundException;
 
     String[] getProductList() throws IOException;
 

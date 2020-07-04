@@ -33,18 +33,37 @@ public class LogInController {
         public void actionPerformed(ActionEvent e) {
             System.out.println("login submit from controller");
             Logged_In = login_model.validateUser(logIn_view.getUsername(),logIn_view.getPassword());
-            try
+
+            if(Logged_In)
             {
-                OrganizationController organizationController = new OrganizationController();
-                // TODO: 7/4/2020 //avia open page
+                logIn_view.SetLogInText(true);
+                String userType = login_model.GetUserType(logIn_view.getUsername());
+                if((userType.equals("Charity"))) {
+                    try {
+                        OrganizationController organizationController = new OrganizationController();
+                    } catch (IOException exception) {
+                        exception.printStackTrace();
+                    } catch (ClassNotFoundException classNotFoundException) {
+                        classNotFoundException.printStackTrace();
+                    }
+                }
+                else if(userType.equals("Retail"))
+                {
+                    // TODO: 7/4/2020 retail Page
+                    System.out.println("retail");
+
+                }
+                else
+                    {
+                        System.out.println("volunteer");
+                }
             }
-            catch (IOException ioException)
+            else
             {
-                ioException.printStackTrace();
-            } catch (ClassNotFoundException classNotFoundException) {
-                classNotFoundException.printStackTrace();
+                logIn_view.SetLogInText(false);
             }
-            //OrganizationView test1 = new OrganizationView();
+            // TODO: 7/4/2020 //avia open page
+
         }
     }
 }

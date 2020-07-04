@@ -36,11 +36,11 @@
         </constraints>
         <properties>
           <actionCommand value="Register"/>
-          <background color="-16742649"/>
+          <background color="-14593127"/>
           <borderPainted value="true"/>
           <defaultCapable value="false"/>
           <enabled value="true"/>
-          <font name="Georgia Pro Black" size="18" style="3"/>
+          <font name="Impact" size="18" style="0"/>
           <foreground color="-1"/>
           <hideActionText value="true"/>
           <horizontalAlignment value="0"/>
@@ -61,13 +61,13 @@
           <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-16770328"/>
+          <background color="-14593127"/>
           <borderPainted value="true"/>
           <contentAreaFilled value="true"/>
           <defaultCapable value="false"/>
           <enabled value="true"/>
           <focusCycleRoot value="false"/>
-          <font name="Georgia Pro Black" size="18" style="1"/>
+          <font name="Impact" size="18" style="0"/>
           <foreground color="-1"/>
           <hideActionText value="false"/>
           <horizontalAlignment value="0"/>
@@ -89,7 +89,7 @@
         </constraints>
         <properties>
           <foreground color="-16121669"/>
-          <text value="משתמש רשום? לחץ כאן!"/>
+          <text value="Already a member?"/>
         </properties>
       </component>
       <component id="46ee3" class="javax.swing.JLabel" binding="welcome1">
@@ -98,8 +98,8 @@
         </constraints>
         <properties>
           <background color="-526337"/>
-          <foreground color="-16742648"/>
-          <text value="עוד לא נרשמת? לחץ כאן!"/>
+          <foreground color="-16770328"/>
+          <text value="new member?"/>
         </properties>
       </component>
     </children>

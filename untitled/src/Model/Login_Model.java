@@ -15,19 +15,19 @@ public class Login_Model {
     private RegisterController registerController;
     IUserRepository userRepository = new UserRepositoryImpl();
 
-    public Login_Model() throws IOException, ClassNotFoundException {
-    }
-
+    public Login_Model() throws IOException, ClassNotFoundException { }
 
     public boolean validateUser(String username,String password){
         if (userRepository.loginSuccess(username, password)) {
             System.out.println("logged in");
             return true;
         }
-        else System.out.println("error");
+        else System.out.println("Invalid username or password");
         return false;
     }
-
-
+    public String GetUserType(String username)
+    {
+        return userRepository.GetType(username);
+    }
 }
 

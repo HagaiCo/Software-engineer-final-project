@@ -6,44 +6,46 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 import Model.Products;
 
 public class FileManager<T> {
 
-    private String filename;
 
-    public FileManager(String filename) {
-        this.filename = filename;
-    }
+    public FileManager() { }
 
-    private boolean isFileExists() {
-        File file = new File(filename);
-        return file.exists();
-    }
-
-    public void write(List<T> object) throws IOException {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(this.filename))) {
+    public void write(List<T> object, String fileName) throws IOException
+    {
+        File file = new File(fileName);
+        if(!file.exists())
+            file.createNewFile();
+       // Scanner scan = new Scanner(fileName);
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName)))
+        {
+         //   String path = file.getAbsolutePath();
             objectOutputStream.writeObject(object);
         }
+
     }
 
-    public List<T> read() throws FileNotFoundException, IOException, ClassNotFoundException {
-        if (!isFileExists()) { // Return empty List when file is not exists
-           return new ArrayList<>();
-        }
-
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(this.filename)))
+    public List<T> read(String fileName) throws  IOException, ClassNotFoundException
+    {
+        File file = new File(fileName);
+        if(!file.exists())
+            return new ArrayList<>();
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName)))
         {
             return (List<T>) objectInputStream.readObject();
         }
     }
 
-   public int GetCSVSize(){
+   public int GetCSVSize(String fileName){
        int size=0;
        BufferedReader br = null;
        try
        {
-           br = new BufferedReader(new FileReader(filename));
+           br = new BufferedReader(new FileReader(fileName));
            size=(int)br.lines().count();
            br.close();
        }
@@ -69,10 +71,10 @@ public class FileManager<T> {
    }
 
 
-    public String[] readCSV(String splitBy) throws FileNotFoundException {
+    public String[] readCSV(String splitBy, String fileName) throws FileNotFoundException {
         int i = 0;
-        int size=GetCSVSize();
-        String csvFile = filename;
+        int size=GetCSVSize(fileName);
+        String csvFile = fileName;
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
@@ -111,11 +113,11 @@ public class FileManager<T> {
 
 
 
-    public String GetInfoByIndex(int index) throws FileNotFoundException {
+    public String GetInfoByIndex(int index, String fileName) throws FileNotFoundException {
         String productsInfo =null;
         try
         {
-                productsInfo = Files.readAllLines(Paths.get(filename)).get(index);
+                productsInfo = Files.readAllLines(Paths.get(fileName)).get(index);
         }
         catch (FileNotFoundException e)
         {
@@ -129,13 +131,11 @@ public class FileManager<T> {
             return productsInfo;
         }
 
-    public void RemoveFromFile(int index) throws IOException {
-        int size=GetCSVSize();
+    public void RemoveFromFile(int index, String fileName) throws IOException {
+        int size=GetCSVSize(fileName);
         String tmp;
-        String [] products=readCSV("\0");
-      //  System.out.println(products[5]);
-    //List<Products> products=readCSV();
-        FileWriter csvWriter = new FileWriter(filename);
+        String [] products=readCSV("\0", fileName);
+        FileWriter csvWriter = new FileWriter(fileName);
 
 
        for (int i=0;i<size;i++) {

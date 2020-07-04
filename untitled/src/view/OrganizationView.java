@@ -6,13 +6,15 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class OrganizationView extends JFrame{
-    private JPanel Test_Page;
+    private JPanel panel;
     private JList productList;
     private JLabel productNameText;
     private JLabel productAmountText;
     private JLabel productDateText;
     private JButton addProduct_button;
     private JButton refreshList_Button;
+    private JList addedJList;
+
 
     private ListSelectionModel listSelectionModel;
 
@@ -20,12 +22,11 @@ public class OrganizationView extends JFrame{
     public OrganizationView() {
         super("Donation-Program");
         setBounds(300,300,800,500);
-        getContentPane().add(Test_Page);
+        getContentPane().add(panel);
         setVisible(true);
         centerWindow(this);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         listSelectionModel=productList.getSelectionModel();
-
     }
 
     public JList getProductList (){
@@ -34,16 +35,16 @@ public class OrganizationView extends JFrame{
 
    public void UpdateProductsOnScreen(String [] products){
 
-       for(String product: products)
-       {
-        System.out.println(product);
-       }
        productList.setListData(products);
    }
 
     public void SetProductsOnScreen(String [] products)
     {
         productList.setListData(products);
+    }
+
+    public void SetAddedList(String [] addedList){
+        addedJList.setListData(addedList);
     }
 
     public void addProduct_listListener(ListSelectionListener lis) {

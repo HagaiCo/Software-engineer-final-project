@@ -12,7 +12,7 @@ public class LogInView extends JFrame {
     private JTextField UsernameField;
     private JButton register_button;
     private JButton logIn_button;
-
+    private JLabel logIn_text;
 
 
     public LogInView() {
@@ -23,6 +23,13 @@ public class LogInView extends JFrame {
         //setVisible(true);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
+    }
+
+    public void SetLogInText(boolean logged){
+        if(!logged)
+        logIn_text.setText("wrong username or password");
+        else
+            logIn_text.setText("");
     }
 
     public void showLogInView()

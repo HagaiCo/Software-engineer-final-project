@@ -11,8 +11,8 @@ public class UserRepositoryImpl implements IUserRepository {
 
     public UserRepositoryImpl() throws IOException, ClassNotFoundException
     {
-        this.fileManager = new FileManager<account>("users");
-        this.users = this.fileManager.read();
+        this.fileManager = new FileManager<account>();
+        this.users = this.fileManager.read("Users");
     }
 
 
@@ -20,7 +20,17 @@ public class UserRepositoryImpl implements IUserRepository {
     public void add(account user) throws Exception
     {
         this.users.add(user);
-        this.fileManager.write(this.users);
+        this.fileManager.write(this.users, "Users");
+    }
+
+    @Override
+    public String GetType(String username) {
+        for (account user : users)
+        {
+            if( Objects.equals(user.getUsername(), username))
+                return user.getType();
+        }
+        return null;
     }
 
     @Override
