@@ -18,9 +18,9 @@ public class ProductsListController
     private ProductListView ProductList_View;
     private JList productJList;
     IProductRepository productRepository = new ProductRepositoryImpl();
-    private String[] userList;
+
     private String[] productsList;
-    private JLabel infoBox;
+
     private int index;
     private String productName=null;
     private ListSelectionModel lsm;
@@ -52,8 +52,6 @@ public class ProductsListController
             index=lsm.getMaxSelectionIndex();
             String productInfo= null;
             String productInfoArr[]= new String[3];
-
-
             String value = ProductList_View.getSelectedValue();
 
             if(index!=-1) {
