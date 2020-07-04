@@ -11,9 +11,6 @@ public class Products
     private String product_name;
     private Integer product_quantity;
     private String experation_day;
-    private boolean fridge = false;
-    private boolean matched= false;
-    private Connection connection;
 
     public Products()
     {

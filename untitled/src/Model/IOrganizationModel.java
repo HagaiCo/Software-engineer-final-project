@@ -3,7 +3,7 @@ package Model;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public interface IProductRepository {
+public interface IOrganizationModel {
 
     void add(Products product) throws Exception;
 
