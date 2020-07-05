@@ -1,6 +1,6 @@
 package controller;
 
-import Model.Login_Model;
+import Model.LoginModel;
 import view.LogInView;
 
 import java.awt.event.ActionEvent;
@@ -8,11 +8,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class LogInController {
-    private Login_Model login_model;
+    private LoginModel login_model;
     private LogInView logIn_view;
     private boolean Logged_In=false;
 
-    public LogInController(Login_Model login_model, LogInView logIn_view) {
+    public LogInController(LoginModel login_model, LogInView logIn_view) {
         this.login_model = login_model;
         this.logIn_view = logIn_view;
 
@@ -39,7 +39,8 @@ public class LogInController {
                 logIn_view.SetLogInText(true);
                 String userType = login_model.GetUserType(logIn_view.getUsername());
                 if((userType.equals("Charity"))) {
-                    try {
+                    try
+                    {
                         OrganizationController organizationController = new OrganizationController();
                     } catch (IOException exception) {
                         exception.printStackTrace();

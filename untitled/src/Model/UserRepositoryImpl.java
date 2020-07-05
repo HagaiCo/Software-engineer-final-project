@@ -1,6 +1,5 @@
 package Model;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,12 +8,23 @@ public class UserRepositoryImpl implements IUserRepository {
     private List<account> users;
     private FileManager<account> fileManager;
 
-    public UserRepositoryImpl() throws IOException, ClassNotFoundException
+    //Singleton creation of this class(Lazy initialization):
+    private static UserRepositoryImpl SoleInstance;
+    public static UserRepositoryImpl getInstance() throws Exception
+    {
+        if (SoleInstance == null)
+        {
+            //if there is no instance available, create new one:
+            SoleInstance = new UserRepositoryImpl();
+        }
+        return SoleInstance;
+    }
+    //private constructor for singleton purpose.
+    private UserRepositoryImpl() throws Exception
     {
         this.fileManager = new FileManager<account>();
         this.users = this.fileManager.read("Users");
     }
-
 
     @Override
     public void add(account user) throws Exception
@@ -27,7 +37,8 @@ public class UserRepositoryImpl implements IUserRepository {
     public String GetType(String username) {
         for (account user : users)
         {
-            if( Objects.equals(user.getUsername(), username))
+            String userNameInFile = user.getUsername();
+            if( Objects.equals(userNameInFile, username))
                 return user.getType();
         }
         return null;
@@ -53,7 +64,7 @@ public class UserRepositoryImpl implements IUserRepository {
         String[] UserArr=new String[users.size()];
         for (account user : users)
         {
-            UserArr[i++]="User:" +user.getUsername()+ ", Name:"+ user.getFirstname()+" "+user.getLastname()
+            UserArr[i++]="User:" +user.getUsername()+ ", Name:"+ user.getFirstName()+" "+user.getLastName()
             +", Phone: " +user.getPhone();
         }
         return UserArr;

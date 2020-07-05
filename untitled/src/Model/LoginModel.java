@@ -4,18 +4,17 @@ import controller.RegisterController;
 import view.LogInView;
 
 import javax.swing.*;
-import java.io.IOException;
 
-public class Login_Model {
+public class LoginModel {
 
     private JButton button_register;
     private JButton button_log;
     private JLabel StatusMassage;
     private LogInView logInView;
     private RegisterController registerController;
-    IUserRepository userRepository = new UserRepositoryImpl();
+    IUserRepository userRepository = UserRepositoryImpl.getInstance();
 
-    public Login_Model() throws IOException, ClassNotFoundException { }
+    public LoginModel() throws Exception { }
 
     public boolean validateUser(String username,String password){
         if (userRepository.loginSuccess(username, password)) {

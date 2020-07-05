@@ -5,7 +5,7 @@ import controller.RegisterController;
 
 import javax.swing.*;
 
-public class HomePage_Model {
+public class HomePageModel {
 
    // private view.HomePage_View HomePage_View;
     private JButton button_register;

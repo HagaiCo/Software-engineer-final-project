@@ -1,7 +1,7 @@
 package Driver;
 
-import Model.HomePage_Model;
-import Model.Login_Model;
+import Model.HomePageModel;
+import Model.LoginModel;
 import Model.RegisterModel;
 import controller.HomePageController;
 import controller.LogInController;
@@ -18,20 +18,20 @@ public class MVCDriver {
     public static RegisterModel register_model;
     public static RegisterController registerController;
     public static LogInView logIn_view;
-    public static Login_Model login_model;
+    public static LoginModel login_model;
     public static LogInController logInController;
 
 
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws Exception {
 
         HomePageView homePage_view=new HomePageView();
-        HomePage_Model homePage_model=new HomePage_Model();
+        HomePageModel homePage_model=new HomePageModel();
         HomePageController homePageController =new HomePageController(homePage_model,homePage_view);
         homePage_view.showHomePageView();
 
         LogInView logIn_view=new LogInView();
-        Login_Model login_model=new Login_Model();
+        LoginModel login_model=new LoginModel();
         LogInController logInController=new LogInController(login_model,logIn_view);
 
         homePageController.getHomePage_view().addButton_registerListener(new button_registerListener());
@@ -49,7 +49,7 @@ public class MVCDriver {
                 register_model=new RegisterModel();
             } catch (IOException exception) {
                 exception.printStackTrace();
-            } catch (ClassNotFoundException classNotFoundException) {
+            } catch (Exception classNotFoundException) {
                 classNotFoundException.printStackTrace();
             }
             registerController=new RegisterController(register_model,register_view);
@@ -63,10 +63,10 @@ public class MVCDriver {
             System.out.println("login from driver");
             logIn_view=new LogInView();
             try {
-                login_model=new Login_Model();
+                login_model=new LoginModel();
             } catch (IOException exception) {
                 exception.printStackTrace();
-            } catch (ClassNotFoundException classNotFoundException) {
+            } catch (Exception classNotFoundException) {
                 classNotFoundException.printStackTrace();
             }
             logInController=new LogInController(login_model,logIn_view);

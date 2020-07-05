@@ -3,6 +3,8 @@ package view;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
+import static view.OrganizationView.centerWindow;
+
 public class RegisterView extends  JFrame {
     private JLabel FirstName_lable;
     private JLabel LastName_lable;
@@ -33,13 +35,14 @@ public class RegisterView extends  JFrame {
         super("Donation-Program");
         setBounds(300,300,800,500);
         getContentPane().add(RegisterViewer);
+        centerWindow(this);
         //setVisible(true);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
 
-    public String getFirstname() { return FirstNameField.getText(); }
-    public String getLastname() { return LastNameField.getText(); }
+    public String getFirstName() { return FirstNameField.getText(); }
+    public String getLastName() { return LastNameField.getText(); }
     public String getUsername() { return UsernameField.getText(); }
     public String getPassword() { return passwordField.getText(); }
     public String getAddress() { return AddressField.getText(); }
@@ -60,7 +63,8 @@ public class RegisterView extends  JFrame {
         termsAlertText.setText("Please accept terms and conditions");
     }
 
-    public String GetType(){
+    public String GetType()
+    {
         if(charityRadioButton.isSelected())
             return "Charity";
         if(retailRadioButton.isSelected())
