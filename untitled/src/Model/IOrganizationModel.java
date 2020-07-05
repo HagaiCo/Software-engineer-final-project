@@ -18,4 +18,6 @@ public interface IOrganizationModel {
 
 
     void RemoveFromFile(int value) throws IOException;
+
+    //void AddProduct(String productName, String productAmount, String productExpirationDay);
 }
