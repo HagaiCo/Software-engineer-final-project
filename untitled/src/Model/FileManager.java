@@ -2,18 +2,14 @@ package Model;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import Model.Products;
 
 public class FileManager<T> {
 
 
-    public FileManager() { }
+    public FileManager(){}
 
     public void write(List<T> object, String fileName) throws IOException
     {

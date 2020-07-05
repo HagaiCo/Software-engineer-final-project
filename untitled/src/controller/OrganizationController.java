@@ -87,20 +87,19 @@ public class OrganizationController
     {
         public void actionPerformed(ActionEvent e)
         {
-           try
-           {
-               organizationModel.AddProduct(new Products(productInfoArr[0],productInfoArr[1],productInfoArr[2]));
-               organizationModel.RemoveFromFile(index);
-               UpdateList();
+            if(index != -1)
+            {
+                try
+                {
+                    organizationModel.AddProduct(new Products(productInfoArr[0], productInfoArr[1], productInfoArr[2]));
+                    organizationModel.RemoveFromFile(index);
+                    UpdateList();
+                } catch (IOException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
             }
-           catch (IOException fileNotFoundException)
-           {
-                fileNotFoundException.printStackTrace();
-           }
-           catch (Exception exception)
-           {
-               exception.printStackTrace();
-           }
         }
     }
 }

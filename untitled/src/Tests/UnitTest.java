@@ -1,16 +1,13 @@
 package Tests;
 
-import Model.IUserRepository;
-import Model.UserRepositoryImpl;
+import Model.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class UnitTest extends TestFactory
 {
-    public UnitTest() throws IOException, ClassNotFoundException { }
-    IUserRepository userRepository = new UserRepositoryImpl();
+    public UnitTest() throws Exception { }
+    IUserRepository userRepository = UserRepositoryImpl.getInstance();
 
     @Test
     public void RegisterTest() throws Exception

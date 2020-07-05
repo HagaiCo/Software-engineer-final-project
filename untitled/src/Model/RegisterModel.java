@@ -1,8 +1,8 @@
 package Model;
 
 import view.RegisterView;
+
 import javax.swing.*;
-import java.io.IOException;
 
 public class RegisterModel {
 
@@ -18,10 +18,9 @@ public class RegisterModel {
     private JRadioButton charityRadioButton;
     private JRadioButton retailRadioButton;
     private JRadioButton volunteerRadioButton;
-    IUserRepository userRepository = new UserRepositoryImpl();
+    IUserRepository userRepository = UserRepositoryImpl.getInstance();
 
-
-    public RegisterModel() throws IOException, ClassNotFoundException {
+    public RegisterModel() throws Exception {
     }
 
     public void addUser(String username,String password,String mobile,String firstName,String lastName,String address,String type) {

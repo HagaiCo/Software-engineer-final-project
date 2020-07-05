@@ -24,7 +24,7 @@ public class RegisterController {
     class button_logListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if(register_view.TermsAccepted())
-                NewUserRegistration(register_view.getUsername(), register_view.getPassword(), register_view.getMobile(), register_view.getFirstname(), register_view.getLastname(), register_view.getAddress(), userType);
+                NewUserRegistration(register_view.getUsername(), register_view.getPassword(), register_view.getMobile(), register_view.getFirstName(), register_view.getLastName(), register_view.getAddress(), userType);
             else
                 register_view.AlertTerms();
         }
@@ -34,7 +34,7 @@ public class RegisterController {
         userType = register_view.GetType();
         try
         {
-            register_model.addUser(userName, password, Mobile, firstName, lastName, address, userTypeExternal);
+            register_model.addUser(userName, password, Mobile, firstName, lastName, address, userType);
             register_view.setVisible(false);
         } catch (Exception exception) {
             exception.printStackTrace();

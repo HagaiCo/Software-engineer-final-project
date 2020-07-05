@@ -10,6 +10,4 @@ public interface IUserRepository {
 
     String[] getUserList();
 
-
-
 }

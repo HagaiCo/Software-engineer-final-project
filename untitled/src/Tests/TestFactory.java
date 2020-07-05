@@ -3,10 +3,9 @@ package Tests;
 import Model.*;
 import controller.OrganizationController;
 import controller.RegisterController;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import view.RegisterView;
-
-import java.io.IOException;
 
 public class TestFactory
 {
@@ -20,21 +19,20 @@ public class TestFactory
 
     static FileManager<Products> fileManager;
 
-    public TestFactory() throws IOException, ClassNotFoundException
-    {
+    public TestFactory() throws Exception {
         oneTimeSetUp();
     }
 
     @BeforeClass
-    public static void oneTimeSetUp() throws IOException, ClassNotFoundException
-    {
+    public static void oneTimeSetUp() throws Exception {
         //one-time initialization code:
-        userRepository = new UserRepositoryImpl();
+        userRepository = UserRepositoryImpl.getInstance();
         organizationModel = new OrganizationModel();
         organizationController = new OrganizationController();
         registerModel = new RegisterModel();
         registerView = new RegisterView();
         registerController = new RegisterController(registerModel, registerView);
+
     }
 
     protected Boolean RegisterValidation() throws Exception
@@ -72,5 +70,8 @@ public class TestFactory
         boolean result = ProductList[0].contains(productName);
         return result;
     }
+
+    @AfterClass
+    public static void tearDown() { }
 }
 
