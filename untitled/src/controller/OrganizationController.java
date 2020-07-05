@@ -12,10 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Serializable;
 
 
-public class OrganizationController implements Serializable
+public class OrganizationController
 {
     private OrganizationView ProductList_View;
     private JList productJList;
@@ -23,7 +22,7 @@ public class OrganizationController implements Serializable
 
     private String[] productsList;
     private String[] addedList;
-    private int index;
+    private int index = -1;
     private String productName=null;
     private ListSelectionModel lsm;
     String productInfoArr[]= new String[3];
@@ -84,15 +83,22 @@ public class OrganizationController implements Serializable
     }
 
 
-    class AddProduct_Listener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-           try {
+    class AddProduct_Listener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+           try
+           {
                organizationModel.AddProduct(new Products(productInfoArr[0],productInfoArr[1],productInfoArr[2]));
                organizationModel.RemoveFromFile(index);
                UpdateList();
-            } catch (IOException fileNotFoundException) {
+            }
+           catch (IOException fileNotFoundException)
+           {
                 fileNotFoundException.printStackTrace();
-            } catch (Exception exception) {
+           }
+           catch (Exception exception)
+           {
                exception.printStackTrace();
            }
         }

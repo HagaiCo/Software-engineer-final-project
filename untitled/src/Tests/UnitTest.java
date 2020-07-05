@@ -2,24 +2,34 @@ package Tests;
 
 import Model.IUserRepository;
 import Model.UserRepositoryImpl;
-import Model.account;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 
-
-public class UnitTest {
+public class UnitTest extends TestFactory
+{
     public UnitTest() throws IOException, ClassNotFoundException { }
     IUserRepository userRepository = new UserRepositoryImpl();
 
     @Test
-    public void LoginTest() throws Exception {
-        String username = "yosi";
-        String password = "Yeswecan";
-        userRepository.add(new account(1, username, password, "", "", "", "",""));
+    public void RegisterTest() throws Exception
+    {
+        boolean result = RegisterValidation();
+        Assert.assertTrue(result);
+    }
 
-        Boolean result = userRepository.loginSuccess(username,password);
+    @Test
+    public void LoginTest() throws Exception
+    {
+        boolean result = LoginValidation();
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void AddProductToMyListTest() throws Exception
+    {
+        boolean result = AddProductToMyListValidation();
         Assert.assertTrue(result);
     }
 }

@@ -2,7 +2,7 @@ package Driver;
 
 import Model.HomePage_Model;
 import Model.Login_Model;
-import Model.Register_Model;
+import Model.RegisterModel;
 import controller.HomePageController;
 import controller.LogInController;
 import controller.RegisterController;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class MVCDriver {
     public static RegisterView register_view;
-    public static Register_Model register_model;
+    public static RegisterModel register_model;
     public static RegisterController registerController;
     public static LogInView logIn_view;
     public static Login_Model login_model;
@@ -46,7 +46,7 @@ public class MVCDriver {
             System.out.println("register from driver");
             register_view=new RegisterView();
             try {
-                register_model=new Register_Model();
+                register_model=new RegisterModel();
             } catch (IOException exception) {
                 exception.printStackTrace();
             } catch (ClassNotFoundException classNotFoundException) {

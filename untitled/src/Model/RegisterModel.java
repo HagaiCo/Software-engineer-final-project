@@ -4,7 +4,7 @@ import view.RegisterView;
 import javax.swing.*;
 import java.io.IOException;
 
-public class Register_Model {
+public class RegisterModel {
 
     private JButton registerButton;
     private JButton resetButton;
@@ -21,7 +21,7 @@ public class Register_Model {
     IUserRepository userRepository = new UserRepositoryImpl();
 
 
-    public Register_Model() throws IOException, ClassNotFoundException {
+    public RegisterModel() throws IOException, ClassNotFoundException {
     }
 
     public void addUser(String username,String password,String mobile,String firstName,String lastName,String address,String type) {
