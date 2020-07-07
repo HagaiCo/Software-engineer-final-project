@@ -1,5 +1,10 @@
 package Tests;
 
+import DBUtils.FileManager;
+import Model.Objects.Account;
+import Model.Objects.Products;
+import Model.UserRepository.IUserRepository;
+import Model.UserRepository.UserRepository;
 import Model.*;
 import controller.OrganizationController;
 import controller.RegisterController;
@@ -26,7 +31,7 @@ public class TestFactory
     @BeforeClass
     public static void oneTimeSetUp() throws Exception {
         //one-time initialization code:
-        userRepository = UserRepositoryImpl.getInstance();
+        userRepository = UserRepository.getInstance();
         organizationModel = new OrganizationModel();
         organizationController = new OrganizationController();
         registerModel = new RegisterModel();
@@ -53,7 +58,7 @@ public class TestFactory
     {
         String username = "yosi";
         String password = "Yeswecan";
-        userRepository.add(new account(1, username, password, "", "", "", "", ""));
+        userRepository.add(new Account(1, username, password, "", "", "", "", ""));
         Boolean result = userRepository.loginSuccess(username, password);
         return result;
     }

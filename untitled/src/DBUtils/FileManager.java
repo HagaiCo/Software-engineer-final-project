@@ -1,4 +1,4 @@
-package Model;
+package DBUtils;
 
 import java.io.*;
 import java.nio.file.Files;

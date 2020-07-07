@@ -1,8 +1,10 @@
-package Model;
+package Model.UserRepository;
+
+import Model.Objects.Account;
 
 public interface IUserRepository {
 
-    void add(account user) throws Exception;
+    void add(Account user) throws Exception;
 
     String GetType(String username);
 

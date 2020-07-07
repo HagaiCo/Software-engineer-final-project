@@ -1,33 +1,36 @@
-package Model;
+package Model.UserRepository;
+
+import DBUtils.FileManager;
+import Model.Objects.Account;
 
 import java.util.List;
 import java.util.Objects;
 
-public class UserRepositoryImpl implements IUserRepository {
+public class UserRepository implements IUserRepository {
 
-    private List<account> users;
-    private FileManager<account> fileManager;
+    private List<Account> users;
+    private FileManager<Account> fileManager;
 
     //Singleton creation of this class(Lazy initialization):
-    private static UserRepositoryImpl SoleInstance;
-    public static UserRepositoryImpl getInstance() throws Exception
+    private static UserRepository SoleInstance;
+    public static UserRepository getInstance() throws Exception
     {
         if (SoleInstance == null)
         {
             //if there is no instance available, create new one:
-            SoleInstance = new UserRepositoryImpl();
+            SoleInstance = new UserRepository();
         }
         return SoleInstance;
     }
     //private constructor for singleton purpose.
-    private UserRepositoryImpl() throws Exception
+    private UserRepository() throws Exception
     {
-        this.fileManager = new FileManager<account>();
+        this.fileManager = new FileManager<Account>();
         this.users = this.fileManager.read("Users");
     }
 
     @Override
-    public void add(account user) throws Exception
+    public void add(Account user) throws Exception
     {
         this.users.add(user);
         this.fileManager.write(this.users, "Users");
@@ -35,7 +38,7 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public String GetType(String username) {
-        for (account user : users)
+        for (Account user : users)
         {
             String userNameInFile = user.getUsername();
             if( Objects.equals(userNameInFile, username))
@@ -47,7 +50,7 @@ public class UserRepositoryImpl implements IUserRepository {
     @Override
     public boolean loginSuccess(String username, String password) {
         //account check =new account(username,password);
-            for (account user : users)
+            for (Account user : users)
             {
                 System.out.println(user.getUsername()+ "==" + username);
                 System.out.println(user.getPassword()+ "==" + password);
@@ -62,7 +65,7 @@ public class UserRepositoryImpl implements IUserRepository {
     {
         int i=0;
         String[] UserArr=new String[users.size()];
-        for (account user : users)
+        for (Account user : users)
         {
             UserArr[i++]="User:" +user.getUsername()+ ", Name:"+ user.getFirstName()+" "+user.getLastName()
             +", Phone: " +user.getPhone();

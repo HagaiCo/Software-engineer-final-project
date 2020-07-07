@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Objects.Products;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

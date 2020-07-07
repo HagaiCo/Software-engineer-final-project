@@ -1,13 +1,14 @@
 package Tests;
 
-import Model.*;
+import Model.UserRepository.IUserRepository;
+import Model.UserRepository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class UnitTest extends TestFactory
 {
     public UnitTest() throws Exception { }
-    IUserRepository userRepository = UserRepositoryImpl.getInstance();
+    IUserRepository userRepository = UserRepository.getInstance();
 
     @Test
     public void RegisterTest() throws Exception
