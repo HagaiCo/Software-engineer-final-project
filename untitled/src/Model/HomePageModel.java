@@ -5,15 +5,11 @@ import controller.RegisterController;
 
 import javax.swing.*;
 
-public class HomePageModel {
-
+public class HomePageModel
+{
    // private view.HomePage_View HomePage_View;
     private JButton button_register;
     private JButton button_log;
     private RegisterController registerController;
     private LogInController logInController;
-
-
-
-
 }
