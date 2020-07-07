@@ -7,7 +7,7 @@ import view.RegisterView;
 
 import javax.swing.*;
 
-public class RegisterModel {
+public class RegisterModel implements IRegisterModel {
 
     private JButton registerButton;
     private JButton resetButton;
@@ -23,18 +23,19 @@ public class RegisterModel {
     private JRadioButton volunteerRadioButton;
     IUserRepository userRepository = UserRepository.getInstance();
 
-    public RegisterModel() throws Exception {
-    }
+    public RegisterModel() throws Exception { }
 
-    public void addUser(String username,String password,String mobile,String firstName,String lastName,String address,String type) {
-        try {
+    @Override
+    public void AddUser(String username, String password, String mobile, String firstName, String lastName, String address, String type)
+    {
+        try
+        {
             userRepository.add(new Account(1,username,password,mobile,firstName,lastName,address,type));
-
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
-
     }
-
 }
 

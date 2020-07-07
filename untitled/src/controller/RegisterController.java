@@ -34,7 +34,7 @@ public class RegisterController {
         userType = register_view.GetType();
         try
         {
-            register_model.addUser(userName, password, Mobile, firstName, lastName, address, userType);
+            register_model.AddUser(userName, password, Mobile, firstName, lastName, address, userType);
             register_view.setVisible(false);
         } catch (Exception exception) {
             exception.printStackTrace();

@@ -7,7 +7,7 @@ import view.LogInView;
 
 import javax.swing.*;
 
-public class LoginModel {
+public class LoginModel implements ILoginModel {
 
     private JButton button_register;
     private JButton button_log;
@@ -18,6 +18,7 @@ public class LoginModel {
 
     public LoginModel() throws Exception { }
 
+    @Override
     public boolean validateUser(String username,String password){
         if (userRepository.loginSuccess(username, password)) {
             System.out.println("logged in");
@@ -26,6 +27,7 @@ public class LoginModel {
         else System.out.println("Invalid username or password");
         return false;
     }
+    @Override
     public String GetUserType(String username)
     {
         return userRepository.GetType(username);
