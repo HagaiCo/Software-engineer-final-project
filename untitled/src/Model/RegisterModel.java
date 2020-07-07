@@ -1,5 +1,8 @@
 package Model;
 
+import Model.Objects.Account;
+import Model.UserRepository.IUserRepository;
+import Model.UserRepository.UserRepository;
 import view.RegisterView;
 
 import javax.swing.*;
@@ -18,14 +21,14 @@ public class RegisterModel {
     private JRadioButton charityRadioButton;
     private JRadioButton retailRadioButton;
     private JRadioButton volunteerRadioButton;
-    IUserRepository userRepository = UserRepositoryImpl.getInstance();
+    IUserRepository userRepository = UserRepository.getInstance();
 
     public RegisterModel() throws Exception {
     }
 
     public void addUser(String username,String password,String mobile,String firstName,String lastName,String address,String type) {
         try {
-            userRepository.add(new account(1,username,password,mobile,firstName,lastName,address,type));
+            userRepository.add(new Account(1,username,password,mobile,firstName,lastName,address,type));
 
         } catch (Exception e) {
             e.printStackTrace();

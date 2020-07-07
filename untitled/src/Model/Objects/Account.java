@@ -1,10 +1,10 @@
 
-package Model;
+package Model.Objects;
 
 import java.io.Serializable;
 import java.sql.*;
 
-public class account implements Serializable
+public class Account implements Serializable
 {
     private int id;
     private String username;//שם משתמש
@@ -17,7 +17,7 @@ public class account implements Serializable
 
 
 
-    public account(int id, String username, String password, String phone, String firstname, String lastname, String email,String type) {
+    public Account(int id, String username, String password, String phone, String firstname, String lastname, String email, String type) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -28,7 +28,7 @@ public class account implements Serializable
         this.type=type;
     }
 
-    public account(String username, String password,String type) {
+    public Account(String username, String password, String type) {
         this.username = username;
         this.password = password;
         this.type=type;

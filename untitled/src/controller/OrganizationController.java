@@ -2,7 +2,7 @@ package controller;
 
 import Model.IOrganizationModel;
 import Model.OrganizationModel;
-import Model.Products;
+import Model.Objects.Products;
 import view.OrganizationView;
 
 import javax.swing.*;

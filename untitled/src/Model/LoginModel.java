@@ -1,5 +1,7 @@
 package Model;
 
+import Model.UserRepository.IUserRepository;
+import Model.UserRepository.UserRepository;
 import controller.RegisterController;
 import view.LogInView;
 
@@ -12,7 +14,7 @@ public class LoginModel {
     private JLabel StatusMassage;
     private LogInView logInView;
     private RegisterController registerController;
-    IUserRepository userRepository = UserRepositoryImpl.getInstance();
+    IUserRepository userRepository = UserRepository.getInstance();
 
     public LoginModel() throws Exception { }
 
