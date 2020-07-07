@@ -3,7 +3,7 @@ package Model;
 import Model.Objects.Account;
 import Model.UserRepository.IUserRepository;
 import Model.UserRepository.UserRepository;
-import view.RegisterView;
+import View.RegisterView;
 
 import javax.swing.*;
 

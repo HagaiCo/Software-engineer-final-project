@@ -1,7 +1,7 @@
-package controller;
+package Controller;
 
 import Model.LoginModel;
-import view.LogInView;
+import View.LogInView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

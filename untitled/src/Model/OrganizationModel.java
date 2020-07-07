@@ -19,14 +19,13 @@ public class OrganizationModel implements IOrganizationModel {
     public OrganizationModel() throws IOException, ClassNotFoundException
     {
         this.fileManager = new FileManager<Products>();
-        this.products = this.fileManager.readCSV(",", "Products.csv");
+        this.products = this.fileManager.ReadFromCSV(",", "Products.csv");
         //this.addedProducts=this.fileManager.read("AddedProducts");
 
     }
 
-
     @Override
-    public void AddProduct(Products product) throws IOException {
+    public void AddProductToMyList(Products product) throws IOException {
         this.addedProducts.add(product);
         this.fileManager.write(this.addedProducts, "AddedProducts");
     }
@@ -46,7 +45,7 @@ public class OrganizationModel implements IOrganizationModel {
     @Override
     public String[] getProductList() throws IOException
     {
-        this.products = this.fileManager.readCSV(",", "Products.csv");
+        this.products = this.fileManager.ReadFromCSV(",", "Products.csv");
         return products;
     }
 
@@ -56,9 +55,15 @@ public class OrganizationModel implements IOrganizationModel {
         return this.fileManager.GetInfoByIndex(index, "Products.csv");
     }
 
-
     @Override
     public void RemoveFromFile(int index) throws IOException {
         this.fileManager.RemoveFromFile(index, "Products.csv");
+    }
+
+    @Override
+    public int GetProductNumberInDB(String fileName) throws IOException
+    {
+        int result = fileManager.GetCSVSize(fileName);
+        return result;
     }
 }
