@@ -2,8 +2,8 @@ package Model;
 
 import Model.UserRepository.IUserRepository;
 import Model.UserRepository.UserRepository;
-import controller.RegisterController;
-import view.LogInView;
+import Controller.RegisterController;
+import View.LogInView;
 
 import javax.swing.*;
 
@@ -19,7 +19,7 @@ public class LoginModel implements ILoginModel {
     public LoginModel() throws Exception { }
 
     @Override
-    public boolean validateUser(String username,String password){
+    public boolean validateUser(String username, String password){
         if (userRepository.loginSuccess(username, password)) {
             System.out.println("logged in");
             return true;

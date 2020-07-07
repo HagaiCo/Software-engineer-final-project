@@ -1,9 +1,9 @@
-package view;
+package View;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-import static view.OrganizationView.centerWindow;
+import static View.OrganizationView.centerWindow;
 
 public class RegisterView extends  JFrame {
     private JLabel FirstName_lable;

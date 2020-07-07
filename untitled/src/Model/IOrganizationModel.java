@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public interface IOrganizationModel
 {
-    void AddProduct(Products product) throws IOException;
+    void AddProductToMyList(Products product) throws IOException;
 
     String[] getAddedList() throws IOException, ClassNotFoundException;
 
@@ -16,4 +16,6 @@ public interface IOrganizationModel
     String GetInfoByIndex(int index) throws FileNotFoundException;
 
     void RemoveFromFile(int value) throws IOException;
+
+    int GetProductNumberInDB(String fileName) throws IOException;
 }

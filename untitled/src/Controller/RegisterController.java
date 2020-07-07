@@ -1,8 +1,8 @@
-package controller;
+package Controller;
 
 
 import Model.RegisterModel;
-import view.RegisterView;
+import View.RegisterView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

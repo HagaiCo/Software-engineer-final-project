@@ -3,12 +3,12 @@ package Driver;
 import Model.HomePageModel;
 import Model.LoginModel;
 import Model.RegisterModel;
-import controller.HomePageController;
-import controller.LogInController;
-import controller.RegisterController;
-import view.HomePageView;
-import view.LogInView;
-import view.RegisterView;
+import Controller.HomePageController;
+import Controller.LogInController;
+import Controller.RegisterController;
+import View.HomePageView;
+import View.LogInView;
+import View.RegisterView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class MVCDriver {
 
     public static void main(String[] args) throws Exception {
 
-        HomePageView homePage_view=new HomePageView();
+        HomePageView homePage_view = new HomePageView();
         HomePageModel homePage_model=new HomePageModel();
         HomePageController homePageController =new HomePageController(homePage_model,homePage_view);
         homePage_view.showHomePageView();

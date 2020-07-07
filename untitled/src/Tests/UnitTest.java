@@ -4,6 +4,7 @@ import Model.UserRepository.IUserRepository;
 import Model.UserRepository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 
 public class UnitTest extends TestFactory
 {
@@ -11,6 +12,7 @@ public class UnitTest extends TestFactory
     IUserRepository userRepository = UserRepository.getInstance();
 
     @Test
+    @DisplayName("Validate user registration functionality")
     public void RegisterTest() throws Exception
     {
         boolean result = RegisterValidation();
@@ -18,6 +20,7 @@ public class UnitTest extends TestFactory
     }
 
     @Test
+    @DisplayName("Validate user login functionality")
     public void LoginTest() throws Exception
     {
         boolean result = LoginValidation();
@@ -25,9 +28,10 @@ public class UnitTest extends TestFactory
     }
 
     @Test
+    @DisplayName("Validate that user can add product to his list, the product delete from DB and updated")
     public void AddProductToMyListTest() throws Exception
     {
-        boolean result = AddProductToMyListValidation();
+        boolean result = AddedProductUpdateInDB();
         Assert.assertTrue(result);
     }
 }

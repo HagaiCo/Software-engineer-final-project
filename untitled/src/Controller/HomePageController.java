@@ -1,7 +1,7 @@
-package controller;
+package Controller;
 
 import Model.HomePageModel;
-import view.HomePageView;
+import View.HomePageView;
 
 
 public class HomePageController {

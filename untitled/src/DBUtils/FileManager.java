@@ -1,9 +1,12 @@
 package DBUtils;
 
+import Model.Objects.Products;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileManager<T> {
@@ -16,13 +19,10 @@ public class FileManager<T> {
         File file = new File(fileName);
         if(!file.exists())
             file.createNewFile();
-       // Scanner scan = new Scanner(fileName);
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName)))
         {
-         //   String path = file.getAbsolutePath();
             objectOutputStream.writeObject(object);
         }
-
     }
 
     public List<T> read(String fileName) throws  IOException, ClassNotFoundException
@@ -67,7 +67,7 @@ public class FileManager<T> {
    }
 
 
-    public String[] readCSV(String splitBy, String fileName) throws FileNotFoundException {
+    public String[] ReadFromCSV(String splitBy, String fileName) throws FileNotFoundException {
         int i = 0;
         int size=GetCSVSize(fileName);
         String csvFile = fileName;
@@ -106,7 +106,25 @@ public class FileManager<T> {
             return productsData;
         }
     }
+    public static void WriteToCSV(Products product, String fileName) throws IOException
+    {
+        List<List<String>> rows = Arrays.asList
+                (
+                        Arrays.asList(product.getProduct_name(), product.getProduct_quantity(), product.getExpiration_day())
+                );
+        File file = new File(fileName);
+        if(!file.exists())
+            System.out.println("file " +fileName+ " does not exist!");
+        FileWriter csvWriter = new FileWriter(fileName, true);
 
+        for (List<String> rowData : rows) {
+            csvWriter.write(String.join(",", rowData));
+            csvWriter.write("\n");
+        }
+
+        csvWriter.flush();
+        csvWriter.close();
+    }
 
 
     public String GetInfoByIndex(int index, String fileName) throws FileNotFoundException {
@@ -130,7 +148,7 @@ public class FileManager<T> {
     public void RemoveFromFile(int index, String fileName) throws IOException {
         int size=GetCSVSize(fileName);
         String tmp;
-        String [] products=readCSV("\0", fileName);
+        String [] products= ReadFromCSV("\0", fileName);
         FileWriter csvWriter = new FileWriter(fileName);
 
 

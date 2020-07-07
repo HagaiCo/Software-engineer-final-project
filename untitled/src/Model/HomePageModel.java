@@ -1,7 +1,7 @@
 package Model;
 
-import controller.LogInController;
-import controller.RegisterController;
+import Controller.LogInController;
+import Controller.RegisterController;
 
 import javax.swing.*;
 

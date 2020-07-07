@@ -1,19 +1,23 @@
 package Tests;
 
+import Controller.OrganizationController;
+import Controller.RegisterController;
 import DBUtils.FileManager;
+import Model.IOrganizationModel;
 import Model.Objects.Account;
 import Model.Objects.Products;
+import Model.OrganizationModel;
+import Model.RegisterModel;
 import Model.UserRepository.IUserRepository;
 import Model.UserRepository.UserRepository;
-import Model.*;
-import controller.OrganizationController;
-import controller.RegisterController;
+import View.RegisterView;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
-import view.RegisterView;
 
-public class TestFactory
-{
+import java.util.Arrays;
+
+public class TestFactory {
     static IUserRepository userRepository;
     static IOrganizationModel organizationModel;
     static OrganizationController organizationController;
@@ -38,10 +42,10 @@ public class TestFactory
         registerView = new RegisterView();
         registerController = new RegisterController(registerModel, registerView);
 
+        fileManager = new FileManager<Products>();
     }
 
-    protected Boolean RegisterValidation() throws Exception
-    {
+    protected Boolean RegisterValidation() throws Exception {
         String userName = "userName_Test";
         String password = "password_Test";
         String Mobile = "Mobile_Test";
@@ -54,8 +58,7 @@ public class TestFactory
         return result;
     }
 
-    protected Boolean LoginValidation() throws Exception
-    {
+    protected Boolean LoginValidation() throws Exception {
         String username = "yosi";
         String password = "Yeswecan";
         userRepository.add(new Account(1, username, password, "", "", "", "", ""));
@@ -63,17 +66,30 @@ public class TestFactory
         return result;
     }
 
-    protected boolean AddProductToMyListValidation() throws Exception
+    protected boolean AddedProductUpdateInDB() throws Exception
     {
+        //mock data:
         String productName = "productName_Test";
         String productAmount = "productAmount_Test";
         String productExpirationDay = "productExpirationDay_Test";
         Products productTest = new Products(productName, productAmount, productExpirationDay);
 
-        organizationModel.AddProduct(productTest);
-        String[] ProductList = organizationModel.getAddedList();
-        boolean result = ProductList[0].contains(productName);
-        return result;
+        //write mock data to DB and validate it's indeed written:
+        fileManager.WriteToCSV(productTest, "Products.csv");
+        String[] allProductInDB = this.fileManager.ReadFromCSV(",", "Products.csv");
+
+        Assert.assertTrue(Arrays.asList(allProductInDB).contains(productName));
+
+        int numberBefore = organizationController.GetProductNumberInDB("Products.csv");
+
+        //Add product to the user list and refresh the main products list:
+        organizationController.AddProductToMyList(productTest, numberBefore-1);
+        organizationController.RefreshList();
+
+        int numberAfter= organizationController.GetProductNumberInDB("Products.csv");
+
+        //validate that the product remove from db and added to user list:
+        return numberBefore == numberAfter+1;
     }
 
     @AfterClass

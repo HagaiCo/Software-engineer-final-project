@@ -1,9 +1,9 @@
-package controller;
+package Controller;
 
 import Model.IOrganizationModel;
 import Model.OrganizationModel;
 import Model.Objects.Products;
-import view.OrganizationView;
+import View.OrganizationView;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -70,36 +70,59 @@ public class OrganizationController
         }
     }
 
-    class AddRefresh_Listener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            try {
-                productsList = organizationModel.getProductList();
-                ProductList_View.UpdateProductsOnScreen(productsList);
-            } catch (IOException exception) {
-                exception.printStackTrace();
-            }
-
+    class AddRefresh_Listener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            RefreshList();
         }
     }
-
 
     class AddProduct_Listener implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
         {
-            if(index != -1)
+            try
             {
-                try
-                {
-                    organizationModel.AddProduct(new Products(productInfoArr[0], productInfoArr[1], productInfoArr[2]));
-                    organizationModel.RemoveFromFile(index);
-                    UpdateList();
-                } catch (IOException fileNotFoundException) {
-                    fileNotFoundException.printStackTrace();
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
+                AddProductToMyList(new Products(productInfoArr[0], productInfoArr[1], productInfoArr[2]), index);
+            }
+            catch (IOException ioException)
+            {
+                ioException.printStackTrace();
+            }
+            catch (ClassNotFoundException classNotFoundException)
+            {
+                classNotFoundException.printStackTrace();
             }
         }
+    }
+
+    public String[] RefreshList()
+    {
+        try
+        {
+            productsList = organizationModel.getProductList();
+            ProductList_View.UpdateProductsOnScreen(productsList);
+        }
+        catch (IOException exception)
+        {
+            exception.printStackTrace();
+        }
+        return productsList;
+    }
+
+    public void AddProductToMyList(Products product, int index) throws IOException, ClassNotFoundException
+    {
+        if(index != -1)
+        {
+            organizationModel.AddProductToMyList(product);
+            organizationModel.RemoveFromFile(index);
+            UpdateList();
+        }
+    }
+    public int GetProductNumberInDB(String fileName) throws IOException
+    {
+        int result = organizationModel.GetProductNumberInDB(fileName);
+        return result;
     }
 }
