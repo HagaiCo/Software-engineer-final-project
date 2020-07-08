@@ -1,10 +1,8 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
-
-
+import static View.ViewFactory.ViewUtils.*;
 public class HomePageView extends JFrame {
     private JLabel title;
     private JButton button_register;
@@ -18,7 +16,7 @@ public class HomePageView extends JFrame {
     public HomePageView() {
         super("Donation-Program");
         setBounds(300, 300, 800, 500);
-        centreWindow(this);
+        CenterWindow(this);
         getContentPane().add(home_page);
         //setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,14 +36,6 @@ public class HomePageView extends JFrame {
 
     public void addButton_loginListener(ActionListener mal) {
         button_log.addActionListener(mal);
-    }
-
-    public static void centreWindow(Window frame)
-    {
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-        frame.setLocation(x, y);
     }
 }
 

@@ -26,11 +26,12 @@ public class RegisterModel implements IRegisterModel {
     public RegisterModel() throws Exception { }
 
     @Override
-    public void AddUser(String username, String password, String mobile, String firstName, String lastName, String address, String type)
+    public void AddUser(Account newAccount)
     {
+        Account account = new Account(newAccount.getId(), newAccount.getUsername(), newAccount.getPassword(), newAccount.getPhone(), newAccount.getFirstName(), newAccount.getLastName(), newAccount.getType());
         try
         {
-            userRepository.add(new Account(1,username,password,mobile,firstName,lastName,address,type));
+            userRepository.add(account);
         }
         catch (Exception e)
         {

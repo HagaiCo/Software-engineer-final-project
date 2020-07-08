@@ -37,7 +37,8 @@ public class LogInController {
             if(Logged_In)
             {
                 logIn_view.SetLogInText(true);
-                String userType = login_model.GetUserType(logIn_view.getUsername());
+                String userName = logIn_view.getUsername();
+                String userType = login_model.GetUserType(userName);
                 if((userType.equals("Charity"))) {
                     try
                     {

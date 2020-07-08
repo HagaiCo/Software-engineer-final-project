@@ -120,7 +120,7 @@ public class OrganizationController
             UpdateList();
         }
     }
-    public int GetProductNumberInDB(String fileName) throws IOException
+    public int GetProductNumberFromDB(String fileName) throws IOException
     {
         int result = organizationModel.GetProductNumberInDB(fileName);
         return result;

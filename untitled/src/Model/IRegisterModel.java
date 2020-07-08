@@ -1,6 +1,8 @@
 package Model;
 
+import Model.Objects.Account;
+
 public interface IRegisterModel
 {
-    void AddUser(String username, String password, String mobile, String firstName, String lastName, String address, String type);
+    void AddUser(Account newAccount);
 }

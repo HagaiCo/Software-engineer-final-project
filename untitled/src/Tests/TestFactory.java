@@ -15,6 +15,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class TestFactory {
@@ -45,52 +46,45 @@ public class TestFactory {
         fileManager = new FileManager<Products>();
     }
 
-    protected Boolean RegisterValidation() throws Exception {
-        String userName = "userName_Test";
-        String password = "password_Test";
-        String Mobile = "Mobile_Test";
-        String firstName = "firstName_Test";
-        String lastName = "lastName_Test";
-        String address = "address_Test";
-        String userType = "Charity";
-        registerController.NewUserRegistration(userName, password, Mobile, firstName, lastName, address, userType);
-        Boolean result = userRepository.loginSuccess(userName, password);
-        return result;
-    }
-
-    protected Boolean LoginValidation() throws Exception {
-        String username = "yosi";
-        String password = "Yeswecan";
-        userRepository.add(new Account(1, username, password, "", "", "", "", ""));
-        Boolean result = userRepository.loginSuccess(username, password);
-        return result;
-    }
-
-    protected boolean AddedProductUpdateInDB() throws Exception
+    protected static void AddNewUser(Account newAccount) throws Exception
     {
-        //mock data:
-        String productName = "productName_Test";
-        String productAmount = "productAmount_Test";
-        String productExpirationDay = "productExpirationDay_Test";
-        Products productTest = new Products(productName, productAmount, productExpirationDay);
+        registerController.NewUserRegistration(newAccount);
+    }
 
-        //write mock data to DB and validate it's indeed written:
+    protected Boolean LoginValidation(Account account) throws Exception
+    {
+        Boolean result = userRepository.loginSuccess(account.getUsername(), account.getPassword());
+        return result;
+    }
+
+    protected void AddedProductToDB(Products productTest) throws Exception
+    {
+        //Insert new product to DB:
         fileManager.WriteToCSV(productTest, "Products.csv");
+
+        //Get all products from DB:
         String[] allProductInDB = this.fileManager.ReadFromCSV(",", "Products.csv");
 
-        Assert.assertTrue(Arrays.asList(allProductInDB).contains(productName));
-
-        int numberBefore = organizationController.GetProductNumberInDB("Products.csv");
-
-        //Add product to the user list and refresh the main products list:
-        organizationController.AddProductToMyList(productTest, numberBefore-1);
-        organizationController.RefreshList();
-
-        int numberAfter= organizationController.GetProductNumberInDB("Products.csv");
-
-        //validate that the product remove from db and added to user list:
-        return numberBefore == numberAfter+1;
+        //Validate that the new product added:
+        Assert.assertTrue(Arrays.asList(allProductInDB).contains(productTest.product_name));
     }
+
+    protected int GetProductNumberFromDB() throws IOException
+    {
+        int numberOfProducts = organizationController.GetProductNumberFromDB("Products.csv");
+        return numberOfProducts;
+    }
+
+    protected void AddProductToMyList(Products product, int index) throws IOException, ClassNotFoundException
+    {
+        organizationController.AddProductToMyList(product, index);
+    }
+
+    protected void RefreshList()
+    {
+        organizationController.RefreshList();
+    }
+
 
     @AfterClass
     public static void tearDown() { }
