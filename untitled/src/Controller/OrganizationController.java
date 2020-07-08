@@ -17,7 +17,6 @@ import java.io.IOException;
 public class OrganizationController
 {
     private OrganizationView ProductList_View;
-    private JList productJList;
     IOrganizationModel organizationModel = new OrganizationModel();
 
     private String[] productsList;
@@ -35,10 +34,10 @@ public class OrganizationController
 
     private void InitComponent() throws IOException, ClassNotFoundException {
         ProductList_View = new OrganizationView();
-        UpdateList();
         ProductList_View.addProduct_listListener(new product_listListener());
         ProductList_View.AddButton_Listener(new AddProduct_Listener());
         ProductList_View.AddRefresh_Listener(new AddRefresh_Listener());
+        UpdateList();
     }
 
     public void UpdateList() throws IOException, ClassNotFoundException {
