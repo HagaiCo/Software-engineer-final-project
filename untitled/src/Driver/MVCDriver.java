@@ -1,6 +1,5 @@
 package Driver;
 
-import Model.HomePageModel;
 import Model.LoginModel;
 import Model.RegisterModel;
 import Controller.HomePageController;
@@ -27,13 +26,12 @@ public class MVCDriver {
     public static void main(String[] args) throws Exception {
 
         HomePageView homePage_view = new HomePageView();
-        HomePageModel homePage_model=new HomePageModel();
-        HomePageController homePageController =new HomePageController(homePage_model,homePage_view);
+        HomePageController homePageController = new HomePageController(homePage_view);
         homePage_view.showHomePageView();
 
-        LogInView logIn_view=new LogInView();
-        LoginModel login_model=new LoginModel();
-        LogInController logInController=new LogInController(login_model,logIn_view);
+        LogInView logIn_view = new LogInView();
+        LoginModel login_model = new LoginModel();
+        LogInController logInController = new LogInController(login_model,logIn_view);
 
         homePageController.getHomePage_view().addButton_registerListener(new button_registerListener());
         homePageController.getHomePage_view().addButton_loginListener(new button_logListener());
@@ -88,6 +86,4 @@ public class MVCDriver {
 
         }
     }
-
-
 }

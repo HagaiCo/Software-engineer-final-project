@@ -48,6 +48,18 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
+    public Boolean FindUser(String username)
+    {
+        for (Account user : users)
+        {
+            String userNameInDB = user.getUsername();
+            if( Objects.equals(userNameInDB, username))
+                return true;
+        }
+        return false;
+    }
+
+    @Override
     public boolean loginSuccess(String username, String password) {
         //account check =new account(username,password);
             for (Account user : users)

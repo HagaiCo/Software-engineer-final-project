@@ -8,6 +8,8 @@ public interface IUserRepository {
 
     String GetType(String username);
 
+    Boolean FindUser(String username);
+
     boolean loginSuccess(String email, String password);
 
     String[] getUserList();

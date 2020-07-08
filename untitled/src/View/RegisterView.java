@@ -2,18 +2,17 @@ package View;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
-
-import static View.OrganizationView.centerWindow;
+import static View.ViewFactory.ViewUtils.CenterWindow;
 
 public class RegisterView extends  JFrame {
     private JLabel FirstName_lable;
     private JLabel LastName_lable;
+    private JTextField FirstNameField;
     private JTextField LastNameField;
     private JTextField UsernameField;
     private JTextField MobileField;
     private JTextField AddressField;
     private JPasswordField passwordField;
-    private JTextField FirstNameField;
     private JLabel UserName_lable;
     private JLabel Password_lable;
     private JLabel Mobile_lable;
@@ -35,7 +34,7 @@ public class RegisterView extends  JFrame {
         super("Donation-Program");
         setBounds(300,300,800,500);
         getContentPane().add(RegisterViewer);
-        centerWindow(this);
+        CenterWindow(this);
         //setVisible(true);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }

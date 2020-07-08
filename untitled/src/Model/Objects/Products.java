@@ -47,7 +47,4 @@ public class Products implements Serializable
     {
         this.product_name = product_name;
     }
-
-
-
 }

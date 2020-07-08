@@ -2,8 +2,8 @@ package View;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
 import java.awt.event.ActionListener;
+import static View.ViewFactory.ViewUtils.*;
 
 public class OrganizationView extends JFrame{
     private JPanel panel;
@@ -24,7 +24,7 @@ public class OrganizationView extends JFrame{
         setBounds(300,300,800,500);
         getContentPane().add(panel);
         setVisible(true);
-        centerWindow(this);
+        CenterWindow(this);
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         listSelectionModel=productList.getSelectionModel();
     }
@@ -42,7 +42,6 @@ public class OrganizationView extends JFrame{
     {
         productList.setListData(products);
     }
-
     public void SetAddedList(String [] addedList){
         addedJList.setListData(addedList);
     }
@@ -69,18 +68,7 @@ public class OrganizationView extends JFrame{
     public void AddButton_Listener(ActionListener mal){
         addProduct_button.addActionListener(mal);
     }
-
     public void AddRefresh_Listener(ActionListener mal){
         refreshList_Button.addActionListener(mal);
     }
-
-
-    public static void centerWindow(Window frame) {
-        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-        int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-        frame.setLocation(x, y);
-    }
-
-
 }
