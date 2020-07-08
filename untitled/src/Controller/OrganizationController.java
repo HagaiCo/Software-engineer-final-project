@@ -34,38 +34,25 @@ public class OrganizationController
 
     private void InitComponent() throws IOException, ClassNotFoundException {
         ProductList_View = new OrganizationView();
-        ProductList_View.addProduct_listListener(new product_listListener());
+        ProductList_View.addProduct_listListener(new SelectProductListener());
         ProductList_View.AddButton_Listener(new AddProduct_Listener());
         ProductList_View.AddRefresh_Listener(new AddRefresh_Listener());
         UpdateList();
     }
 
-    public void UpdateList() throws IOException, ClassNotFoundException {
+    public void UpdateList() throws IOException, ClassNotFoundException
+    {
         productsList = organizationModel.getProductList();
         ProductList_View.SetProductsOnScreen(productsList);
         addedList=organizationModel.getAddedList();
         ProductList_View.SetAddedList(addedList);
     }
 
-    class product_listListener implements ListSelectionListener {
+    class SelectProductListener implements ListSelectionListener {
         @Override
-        public void valueChanged(ListSelectionEvent lis) {
-
-            lsm = (ListSelectionModel)lis.getSource();
-            index=lsm.getMaxSelectionIndex();
-            String productInfo= null;
-            if(index!=-1 ) {
-                try {
-                    productInfo = organizationModel.GetInfoByIndex(index);
-                    productInfoArr=productInfo.split(",");
-                    ProductList_View.SetProductNameText(productInfoArr[0]);
-                    ProductList_View.SetProductAmountText(productInfoArr[1]);
-                    ProductList_View.SetProductDateText(productInfoArr[2]);
-                    productName=productInfoArr[0];
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-            }
+        public void valueChanged(ListSelectionEvent lis)
+        {
+            SelectProduct(lis);
         }
     }
 
@@ -81,18 +68,7 @@ public class OrganizationController
     {
         public void actionPerformed(ActionEvent e)
         {
-            try
-            {
-                AddProductToMyList(new Products(productInfoArr[0], productInfoArr[1], productInfoArr[2]), index);
-            }
-            catch (IOException ioException)
-            {
-                ioException.printStackTrace();
-            }
-            catch (ClassNotFoundException classNotFoundException)
-            {
-                classNotFoundException.printStackTrace();
-            }
+            AddProductToMyList(new Products(productInfoArr[0], productInfoArr[1], productInfoArr[2]), index);
         }
     }
 
@@ -110,18 +86,48 @@ public class OrganizationController
         return productsList;
     }
 
-    public void AddProductToMyList(Products product, int index) throws IOException, ClassNotFoundException
+    public void AddProductToMyList(Products product, int index)
     {
-        if(index != -1)
+        try
         {
-            organizationModel.AddProductToMyList(product);
-            organizationModel.RemoveFromFile(index);
-            UpdateList();
+            if (index != -1)
+            {
+                organizationModel.AddProductToMyList(product);
+                organizationModel.RemoveFromFile(index);
+                UpdateList();
+            }
+        }
+        catch (IOException ioException)
+        {
+            ioException.printStackTrace();
+        }
+            catch (ClassNotFoundException classNotFoundException)
+        {
+            classNotFoundException.printStackTrace();
         }
     }
     public int GetProductNumberFromDB(String fileName) throws IOException
     {
         int result = organizationModel.GetProductNumberInDB(fileName);
         return result;
+    }
+
+    public void SelectProduct(ListSelectionEvent lis)
+    {
+        lsm = (ListSelectionModel) lis.getSource();
+        index = lsm.getMaxSelectionIndex();
+        String productInfo = null;
+        if (index != -1) {
+            try {
+                productInfo = organizationModel.GetInfoByIndex(index);
+                productInfoArr = productInfo.split(",");
+                ProductList_View.SetProductNameText(productInfoArr[0]);
+                ProductList_View.SetProductAmountText(productInfoArr[1]);
+                ProductList_View.SetProductDateText(productInfoArr[2]);
+                productName = productInfoArr[0];
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
