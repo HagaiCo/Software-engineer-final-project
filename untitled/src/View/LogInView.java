@@ -12,7 +12,6 @@ public class LogInView extends JFrame
     private JLabel Label;
     private JLabel pass;
     private JTextField UsernameField;
-    private JButton register_button;
     private JButton logIn_button;
     private JLabel logIn_text;
 
@@ -49,7 +48,4 @@ public class LogInView extends JFrame
         logIn_button.addActionListener(mal);
     }
 
-    public void addButton_registerListener(ActionListener mal) {
-        register_button.addActionListener(mal);
-    }
 }
