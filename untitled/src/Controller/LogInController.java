@@ -7,29 +7,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class LogInController {
+public class LogInController
+{
     private LoginModel login_model;
     private LogInView logIn_view;
-    private boolean Logged_In=false;
 
-    public LogInController(LoginModel login_model, LogInView logIn_view) {
+    private boolean Logged_In = false;
+
+    public LogInController(LoginModel login_model, LogInView logIn_view)
+    {
         this.login_model = login_model;
         this.logIn_view = logIn_view;
 
         logIn_view.addButton_loginSubmitListener(new button_logSubmitListener());
-
-    }
-
-    public boolean isLogged_In() {
-        return Logged_In;
     }
 
     public LogInView getLogIn_view() {
         return logIn_view;
     }
 
+    public void showLogInView() { logIn_view.showLogInView(); }
 
-    class button_logSubmitListener implements ActionListener {
+    class button_logSubmitListener implements ActionListener
+    {
         public void actionPerformed(ActionEvent e) {
             System.out.println("login submit from controller");
             Logged_In = login_model.validateUser(logIn_view.getUsername(),logIn_view.getPassword());
@@ -39,7 +39,8 @@ public class LogInController {
                 logIn_view.SetLogInText(true);
                 String userName = logIn_view.getUsername();
                 String userType = login_model.GetUserType(userName);
-                if((userType.equals("Charity"))) {
+                if((userType.equals("Charity")))
+                {
                     try
                     {
                         OrganizationController organizationController = new OrganizationController();
@@ -65,7 +66,6 @@ public class LogInController {
                 logIn_view.SetLogInText(false);
             }
             // TODO: 7/4/2020 //avia open page
-
         }
     }
 }

@@ -10,37 +10,37 @@ import java.awt.event.ActionListener;
 
 public class RegisterController {
 
-    private RegisterModel register_model;
-    private RegisterView register_view;
-    private String userType;
+    private RegisterModel registerModel;
+    private RegisterView registerView;
 
-    public RegisterController(RegisterModel register_model, RegisterView register_view)
+    public RegisterController(RegisterModel registerModel, RegisterView registerView)
     {
-        this.register_model = register_model;
-        this.register_view = register_view;
+        this.registerModel = registerModel;
+        this.registerView = registerView;
 
-        register_view.addRegisterSubmitListener(new button_logListener());
+        registerView.addRegisterSubmitListener(new button_logListener());
     }
+
+    public void showRegisterView() { registerView.showRegisterView(); }
 
     class button_logListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            if(register_view.TermsAccepted())
+            if(registerView.TermsAccepted())
             {
-                Account newAccount = new Account(1, register_view.getUsername(), register_view.getPassword(), register_view.getMobile(), register_view.getFirstName(), register_view.getLastName(), register_view.GetType());
+                Account newAccount = new Account(1, registerView.getUsername(), registerView.getPassword(), registerView.getMobile(), registerView.getFirstName(), registerView.getLastName(), registerView.GetType());
                 NewUserRegistration(newAccount);
             }
             else
-                register_view.AlertTerms();
+                registerView.AlertTerms();
         }
     }
     public void NewUserRegistration(Account newAccount)
     {
         Account account = new Account(newAccount);
-        userType = register_view.GetType();
         try
         {
-            register_model.AddUser(account);
-            register_view.setVisible(false);
+            registerModel.AddUser(account);
+            registerView.setVisible(false);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
