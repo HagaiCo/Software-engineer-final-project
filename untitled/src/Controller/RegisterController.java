@@ -23,8 +23,10 @@ public class RegisterController {
 
     public void showRegisterView() { registerView.showRegisterView(); }
 
-    class button_logListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
+    class button_logListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
             if(registerView.TermsAccepted())
             {
                 Account newAccount = new Account(1, registerView.getUsername(), registerView.getPassword(), registerView.getMobile(), registerView.getFirstName(), registerView.getLastName(), registerView.GetType());
