@@ -14,8 +14,6 @@ public class Account implements Serializable
     private String email;
     private String type;
 
-
-
     public Account(int id, String username, String password, String phone, String firstName, String lastName, String type) {
         this.id = id;
         this.username = username;

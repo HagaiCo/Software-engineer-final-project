@@ -14,10 +14,7 @@ public class OrganizationView extends JFrame{
     private JButton addProduct_button;
     private JButton refreshList_Button;
     private JList addedJList;
-
-
     private ListSelectionModel listSelectionModel;
-
 
     public OrganizationView() {
         super("Donation-Program");
@@ -42,6 +39,7 @@ public class OrganizationView extends JFrame{
     {
         productList.setListData(products);
     }
+
     public void SetAddedList(String [] addedList){
         addedJList.setListData(addedList);
     }
@@ -64,7 +62,6 @@ public class OrganizationView extends JFrame{
     public void SetProductDateText(String text){
         productDateText.setText(text);
     }
-
     public void AddButton_Listener(ActionListener mal){
         addProduct_button.addActionListener(mal);
     }

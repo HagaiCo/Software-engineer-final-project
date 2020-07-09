@@ -2,7 +2,6 @@ package Model.UserRepository;
 
 import DBUtils.FileManager;
 import Model.Objects.Account;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -64,8 +63,6 @@ public class UserRepository implements IUserRepository {
         //account check =new account(username,password);
             for (Account user : users)
             {
-                System.out.println(user.getUsername()+ "==" + username);
-                System.out.println(user.getPassword()+ "==" + password);
                 if( Objects.equals(user.getUsername(), username) &&  Objects.equals(user.getPassword(), password)  )
                     return  true;
             }

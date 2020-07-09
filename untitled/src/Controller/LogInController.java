@@ -11,14 +11,12 @@ public class LogInController
 {
     private LoginModel login_model;
     private LogInView logIn_view;
-
     private boolean Logged_In = false;
 
     public LogInController(LoginModel login_model, LogInView logIn_view)
     {
         this.login_model = login_model;
         this.logIn_view = logIn_view;
-
         logIn_view.addButton_loginSubmitListener(new button_logSubmitListener());
     }
 
@@ -31,7 +29,6 @@ public class LogInController
     class button_logSubmitListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e) {
-            System.out.println("login submit from controller");
             Logged_In = login_model.validateUser(logIn_view.getUsername(),logIn_view.getPassword());
 
             if(Logged_In)
@@ -52,20 +49,13 @@ public class LogInController
                 }
                 else if(userType.equals("Retail"))
                 {
-                    // TODO: 7/4/2020 retail Page
                     System.out.println("retail");
-
-                }
-                else
-                    {
-                        System.out.println("volunteer");
                 }
             }
             else
             {
                 logIn_view.SetLogInText(false);
             }
-            // TODO: 7/4/2020 //avia open page
         }
     }
 }

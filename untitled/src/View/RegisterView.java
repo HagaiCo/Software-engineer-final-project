@@ -39,7 +39,6 @@ public class RegisterView extends  JFrame {
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
-
     public String getFirstName() { return FirstNameField.getText(); }
     public String getLastName() { return LastNameField.getText(); }
     public String getUsername() { return UsernameField.getText(); }
@@ -86,6 +85,5 @@ public class RegisterView extends  JFrame {
     public void addRegisterSubmitListener(ActionListener mal){
 
         registerButton.addActionListener(mal);}
-
 
 }

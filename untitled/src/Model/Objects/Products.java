@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Products implements Serializable
 {
-
     public String product_name;
     private String product_quantity;
     private String expiration_day;
