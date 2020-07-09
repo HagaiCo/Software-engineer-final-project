@@ -18,7 +18,6 @@ public class OrganizationController
 {
     private OrganizationView ProductList_View;
     IOrganizationModel organizationModel = new OrganizationModel();
-
     private String[] productsList;
     private String[] addedList;
     private int index = -1;
@@ -29,7 +28,6 @@ public class OrganizationController
     public OrganizationController() throws IOException, ClassNotFoundException
     {
         InitComponent();
-
     }
 
     private void InitComponent() throws IOException, ClassNotFoundException {

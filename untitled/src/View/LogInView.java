@@ -16,7 +16,6 @@ public class LogInView extends JFrame
     private JButton logIn_button;
     private JLabel logIn_text;
 
-
     public LogInView() {
         super("Donation-Program");
         setBounds(300,300,800,500);
@@ -43,11 +42,13 @@ public class LogInView extends JFrame
     public String getPassword() {
         return passwordField.getText();
     }
+
     public String getUsername() { return UsernameField.getText(); }
 
     public void addButton_loginSubmitListener(ActionListener mal) {
         logIn_button.addActionListener(mal);
     }
+
     public void addButton_registerListener(ActionListener mal) {
         register_button.addActionListener(mal);
     }

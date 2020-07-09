@@ -11,7 +11,6 @@ import java.util.List;
 
 public class FileManager<T> {
 
-
     public FileManager(){}
 
     public void write(List<T> object, String fileName) throws IOException
@@ -126,7 +125,6 @@ public class FileManager<T> {
         csvWriter.close();
     }
 
-
     public String GetInfoByIndex(int index, String fileName) throws FileNotFoundException {
         String productsInfo =null;
         try
@@ -151,19 +149,14 @@ public class FileManager<T> {
         String [] products= ReadFromCSV("\0", fileName);
         FileWriter csvWriter = new FileWriter(fileName);
 
-
        for (int i=0;i<size;i++) {
            //tmp=products[i].split(",")[0];
            if(i!=index)
            csvWriter.append(products[i]+"\n");
-
         }
-
         csvWriter.flush();
         csvWriter.close();
-
     }
-
 }
 
 

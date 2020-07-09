@@ -14,11 +14,9 @@ import java.io.IOException;
 public class HomePageController
 {
     private static HomePageView homePageView;
-
     private static RegisterController registerController;
     private static RegisterView registerView;
     private static RegisterModel registerModel;
-
     private static LogInController logInController;
     private static LogInView logInView;
     private static LoginModel loginModel;
@@ -26,7 +24,6 @@ public class HomePageController
     public HomePageController(HomePageView homePageView) throws Exception
     {
         this.homePageView = homePageView;
-
         getHomePage_view().addButton_registerListener(new button_registerListener());
         getHomePage_view().addButton_loginListener(new button_logListener());
     }
@@ -39,7 +36,6 @@ public class HomePageController
     {
         public void actionPerformed(ActionEvent e)
         {
-            System.out.println("register from driver");
             registerView = new RegisterView();
             try
             {
@@ -58,7 +54,6 @@ public class HomePageController
     {
         public void actionPerformed(ActionEvent e)
         {
-            System.out.println("login from driver");
             logInView = new LogInView();
             try {
                 loginModel = new LoginModel();

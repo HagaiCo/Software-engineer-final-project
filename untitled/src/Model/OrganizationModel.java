@@ -21,7 +21,6 @@ public class OrganizationModel implements IOrganizationModel {
         this.fileManager = new FileManager<Products>();
         this.products = this.fileManager.ReadFromCSV(",", "Products.csv");
         //this.addedProducts=this.fileManager.read("AddedProducts");
-
     }
 
     @Override
@@ -40,15 +39,12 @@ public class OrganizationModel implements IOrganizationModel {
         return addedList ;
     }
 
-
-
     @Override
     public String[] getProductList() throws IOException
     {
         this.products = this.fileManager.ReadFromCSV(",", "Products.csv");
         return products;
     }
-
 
     @Override
     public String GetInfoByIndex(int index) throws FileNotFoundException {

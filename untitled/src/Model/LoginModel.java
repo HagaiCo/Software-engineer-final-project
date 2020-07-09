@@ -21,10 +21,8 @@ public class LoginModel implements ILoginModel {
     @Override
     public boolean validateUser(String username, String password){
         if (userRepository.loginSuccess(username, password)) {
-            System.out.println("logged in");
             return true;
         }
-        else System.out.println("Invalid username or password");
         return false;
     }
     @Override
