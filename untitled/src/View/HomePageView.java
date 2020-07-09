@@ -23,12 +23,9 @@ public class HomePageView extends JFrame {
 
     }
 
-
     public void showHomePageView() {
         this.setVisible(true);
     }
-
-
 
     public void addButton_registerListener(ActionListener mal) {
         button_register.addActionListener(mal);
