@@ -35,11 +35,11 @@ public class HomePageController
         return homePageView;
     }
 
-
     static class button_registerListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
         {
+            System.out.println("register from driver");
             registerView = new RegisterView();
             try
             {
@@ -50,14 +50,14 @@ public class HomePageController
                 exception.printStackTrace();
             }
             registerController = new RegisterController(registerModel, registerView);
-            System.out.println("register from driver");
-            registerView.showRegisterView();
+            registerController.showRegisterView();
         }
     }
 
     static class button_logListener implements ActionListener
     {
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e)
+        {
             System.out.println("login from driver");
             logInView = new LogInView();
             try {
@@ -68,20 +68,7 @@ public class HomePageController
                 classNotFoundException.printStackTrace();
             }
             logInController = new LogInController(loginModel, logInView);
-            logInController.getLogIn_view().addButton_loginSubmitListener(new button_logSubmitListener());
-            logInView.showLogInView();
-        }
-    }
-    static class button_logSubmitListener implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e)
-        {
-            if(logInController.isLogged_In())
-                System.out.println("logged in");
-            //todo: get type
-            else
-                System.out.println("error");
-            //todo: add logged in page here
+            logInController.showLogInView();
         }
     }
 }
