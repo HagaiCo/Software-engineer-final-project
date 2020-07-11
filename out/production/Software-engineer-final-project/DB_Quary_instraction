@@ -1,7 +1,0 @@
-
-
-
-sql = "DELETE FROM [schema name].[table name] WHERE productid = 3;";
-sql = "INSERT INTO [schema name].[table name] (productsname, productid) VALUES ('HagaiTest', 3)";
-sql = "create schema [schema name]";
-
